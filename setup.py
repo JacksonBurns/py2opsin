@@ -35,7 +35,7 @@ setup(
     author="Jackson Burns, Jonathan Zheng",
     license="MIT",
     classifiers=["Programming Language :: Python :: 3"],
-    install_requires=read("requirements.txt").split("\n"),
+    install_requires=[],
     packages=find_packages(),
     include_package_data=True,
 )
