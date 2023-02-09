@@ -18,7 +18,8 @@ def py2opsin(
 
     Args:
         chemical_name (str): IUPAC name of chemical.
-        output_format (str, optional): One of "SMILES", "CML", "InChI", "StdInChI", or "StdInChIKey". Defaults to "SMILES".
+        output_format (str, optional): One of "SMILES", "ExtendedSMILES", "CML", "InChI", "StdInChI", or "StdInChIKey".
+                                        Defaults to "SMILES".
         allow_acid (bool, optional): Allow interpretation of acids. Defaults to False.
         allow_radicals (bool, optional): Enable radical interpretation. Defaults to False.
         allow_bad_stereo (bool, optional): Allow OPSIN to ignore uninterpreatable stereochem. Defaults to False.
@@ -35,6 +36,8 @@ def py2opsin(
     # format the output argument
     if output_format == "SMILES":
         arg_list.append("-osmi")
+    if output_format == "ExtendedSMILES":
+        arg_list.append("-oextendedsmiles")
     elif output_format == "CML":
         arg_list.append("-ocml")
     elif output_format == "InChI":
@@ -46,7 +49,14 @@ def py2opsin(
     else:
         possiblity = get_close_matches(
             output_format,
-            ["SMILES", "CML", "InChI", "StdInChI", "StdInChIKey"],
+            [
+                "SMILES",
+                "CML",
+                "InChI",
+                "StdInChI",
+                "StdInChIKey",
+                "ExtendedSMILES",
+            ],
             n=1,
         )
         addendum = (
