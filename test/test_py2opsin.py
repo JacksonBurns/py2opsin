@@ -20,37 +20,43 @@ class Test_py2opsin(unittest.TestCase):
         self.chemical_names = (
             "ethane",
             "water",
-            "4-amino-4-phenylbutanoic acid",
+            "phenylalanine",
+            "(2S)-2-azaniumyl-3-phenylpropanoate"
         )
         
         self.chemical_smiles = (
             "CC",
             "O",
-            "NC(CCC(=O)O)C1=CC=CC=C1",
+            "N[C@@H](CC1=CC=CC=C1)C(=O)O",
+            "[NH3+][C@H](C(=O)[O-])CC1=CC=CC=C1",
         )
 
         self.chemical_stdinchis = (
             "InChI=1/C2H6/c1-2/h1-2H3",
             "InChI=1/H2O/h1H2",
-            "InChI=1/C10H13NO2/c11-9(6-7-10(12)13)8-4-2-1-3-5-8/h1-5,9H,6-7,11H2,(H,12,13)/f/h12H",
+            "InChI=1S/C9H11NO2/c10-8(9(11)12)6-7-4-2-1-3-5-7/h1-5,8H,6,10H2,(H,11,12)/t8-/m0/s1",
+            "InChI=1S/C9H11NO2/c10-8(9(11)12)6-7-4-2-1-3-5-7/h1-5,8H,6,10H2,(H,11,12)/t8-/m0/s1",
         )
 
         self.chemical_stdinchikeys = (
-            "",
-            "",
-            "",
+            "OTMSDBZUPAUEDD-UHFFFAOYSA-N",
+            "XLYOFNOQVPJJNP-UHFFFAOYSA-N",
+            "COLNVLDHVKWLRT-QMMMGPOBSA-N",
+            "COLNVLDHVKWLRT-QMMMGPOBSA-N",
         )
 
         self.chemical_inchi_fixedh = (
-            "",
-            "",
-            "",
+            "InChI=1/C2H6/c1-2/h1-2H3",
+            "InChI=1/H2O/h1H2",
+            "InChI=1/C9H11NO2/c10-8(9(11)12)6-7-4-2-1-3-5-7/h1-5,8H,6,10H2,(H,11,12)/t8-/m0/s1/f/h11H",
+            "InChI=1/C9H11NO2/c10-8(9(11)12)6-7-4-2-1-3-5-7/h1-5,8H,6,10H2,(H,11,12)/t8-/m0/s1/f/h10H",
         )
 
         self.chemical_extendedsmiles = (
             "CC |$_AV:1;2$|",
             "O |$_AV:O$|"
-            "NC(CCC(=O)O)C1=CC=CC=C1 |$_AV:N;4;3;2;1;O';O;1;2;3;4;5;6$|"
+            "N[C@@H](CC1=CC=CC=C1)C(=O)O |$_AV:N;alpha;beta;1;2;3;4;5;6;;O';O$|",
+            "[NH3+][C@H](C(=O)[O-])CC1=CC=CC=C1 |$_AV:1;2;1;O';O;3;1;2;3;4;5;6$|",
         )
 
         self.chemical_info = [
