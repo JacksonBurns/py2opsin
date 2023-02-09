@@ -36,7 +36,7 @@ def py2opsin(
     # format the output argument
     if output_format == "SMILES":
         arg_list.append("-osmi")
-    if output_format == "ExtendedSMILES":
+    elif output_format == "ExtendedSMILES":
         arg_list.append("-oextendedsmiles")
     elif output_format == "CML":
         arg_list.append("-ocml")
