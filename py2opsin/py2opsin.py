@@ -109,13 +109,13 @@ def py2opsin(
         if type(chemical_name) is str:
             return (
                 result.stdout.decode(encoding=sys.stdout.encoding)
-                .strip("\n")
-                .strip("\r")
+                .replace("\n", "")
+                .replace("\r", "")
             )
         else:
             return (
                 result.stdout.decode(encoding=sys.stdout.encoding)
-                .strip("\r")
+                .replace("\r", "")
                 .split("\n")[0:-1]  # ignore newline at file end
             )
 
