@@ -24,7 +24,7 @@ class Test_py2opsin(unittest.TestCase):
 
     def test_name_to_smiles(self):
         """ """
-        py2opsin()
+        print(py2opsin("ethane"))
 
 
 if __name__ == "__main__":
