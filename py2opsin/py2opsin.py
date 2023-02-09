@@ -3,6 +3,7 @@ import os
 import subprocess
 import sys
 import warnings
+import pkg_resources
 
 from typing import Union
 
@@ -14,7 +15,7 @@ def py2opsin(
     allow_radicals: bool = False,
     allow_bad_stereo: bool = False,
     wildcard_radicals: bool = False,
-    jar_fpath: str = "opsin-cli-2.7.0-jar-with-dependencies.jar",
+    jar_fpath: str = "default",
 ) -> str:
     """Simple passthrough to opsin, returning results as Python strings.
 
@@ -26,12 +27,16 @@ def py2opsin(
         allow_radicals (bool, optional): Enable radical interpretation. Defaults to False.
         allow_bad_stereo (bool, optional): Allow OPSIN to ignore uninterpreatable stereochem. Defaults to False.
         wildcard_radicals (bool, optional): Output radicals as wildcards. Defaults to False.
-        jar_fpath (str, optional): Filepath to OPSIN jar file.
-                                    Defaults to "opsin-cli-2.7.0-jar-with-dependencies.jar" which is distributed with py2opsin.
+        jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "default", which causes py2opsin to use its included jar.
 
     Returns:
         str: Species in requested format, or False if not found or an error occoured. List of strings if input is list.
     """
+    if jar_fpath == "default":
+        jar_fpath = pkg_resources.resource_filename(
+            __name__, "opsin-cli-2.7.0-jar-with-dependencies.jar"
+        )
+
     # default arguments to start
     arg_list = ["java", "-jar", jar_fpath]
 

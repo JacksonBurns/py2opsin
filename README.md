@@ -49,7 +49,7 @@ Arguments:
     allow_radicals (bool, optional): Enable radical interpretation. Defaults to False.
     allow_bad_stereo (bool, optional): Allow OPSIN to ignore uninterpreatable stereochem. Defaults to False.
     wildcard_radicals (bool, optional): Output radicals as wildcards. Defaults to False.
-    jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "opsin-cli-2.7.0-jar-with-dependencies.jar" which is distributed with py2opsin.
+    jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "opsin-cli.jar" which is distributed with py2opsin.
 
 ## License
 `OPSIN` and `py2opsin` are both distributed under the MIT license.
