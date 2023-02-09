@@ -78,7 +78,12 @@ class Test_py2opsin(unittest.TestCase):
 
     def test_invalid_output_helpful_error(self):
         """Typo in the output specification should be greeted with helpful error."""
-        py2opsin("ethane", "SMOLES")
+        with self.assertRaises(RuntimeError) as helpful_error:
+            py2opsin("ethane", "SMOLES")
+        self.assertEqual(
+            str(helpful_error.exception),
+            "Output format SMOLES is invalid. Did you mean 'SMILES'?",
+        )
 
     def test_name_to_smiles(self):
         """
