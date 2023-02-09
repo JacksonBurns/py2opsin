@@ -30,7 +30,7 @@ from py2opsin import py2opsin
 smiles_str = "CC"
 
 >> py2opsin(
-    chemical_name: str,
+    chemical_name: str or list of strings,
     output_format: str = "SMILES",
     allow_acid = False,
     allow_radicals = True,
@@ -40,10 +40,10 @@ smiles_str = "CC"
 )
 ```
 
-The result is returned as a Python string, or False if an unexpected error occurs when calling OPSIN.
+The result is returned as a Python string, or False if an unexpected error occurs when calling OPSIN. If a list of IUPAC names is provided, a list if returned.
 
 Arguments:
-    chemical_name (str): IUPAC name of chemical.
+    chemical_name (str): IUPAC name of chemical as a Python string, or a list of strings.
     output_format (str, optional): One of "SMILES", "CML", "InChI", "StdInChI", or "StdInChIKey". Defaults to "SMILES".
     allow_acid (bool, optional): Allow interpretation of acids. Defaults to False.
     allow_radicals (bool, optional): Enable radical interpretation. Defaults to False.

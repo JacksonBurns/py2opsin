@@ -4,9 +4,11 @@ import subprocess
 import sys
 import warnings
 
+from typing import Union
+
 
 def py2opsin(
-    chemical_name: str,
+    chemical_name: Union[str, list],
     output_format: str = "SMILES",
     allow_acid: bool = False,
     allow_radicals: bool = False,
@@ -17,8 +19,9 @@ def py2opsin(
     """Simple passthrough to opsin, returning results as Python strings.
 
     Args:
-        chemical_name (str): IUPAC name of chemical.
-        output_format (str, optional): One of "SMILES", "CML", "InChI", "StdInChI", or "StdInChIKey". Defaults to "SMILES".
+        chemical_name (str, list): IUPAC name of chemical as string, or list of strings.
+        output_format (str, optional): One of "SMILES", "ExtendedSMILES", "CML", "InChI", "StdInChI", or "StdInChIKey".
+                                        Defaults to "SMILES".
         allow_acid (bool, optional): Allow interpretation of acids. Defaults to False.
         allow_radicals (bool, optional): Enable radical interpretation. Defaults to False.
         allow_bad_stereo (bool, optional): Allow OPSIN to ignore uninterpreatable stereochem. Defaults to False.
@@ -27,7 +30,7 @@ def py2opsin(
                                     Defaults to "opsin-cli-2.7.0-jar-with-dependencies.jar" which is distributed with py2opsin.
 
     Returns:
-        str: Species in requested format, or False if not found or an error occoured.
+        str: Species in requested format, or False if not found or an error occoured. List of strings if input is list.
     """
     # default arguments to start
     arg_list = ["java", "-jar", jar_fpath]
@@ -35,6 +38,8 @@ def py2opsin(
     # format the output argument
     if output_format == "SMILES":
         arg_list.append("-osmi")
+    elif output_format == "ExtendedSMILES":
+        arg_list.append("-oextendedsmiles")
     elif output_format == "CML":
         arg_list.append("-ocml")
     elif output_format == "InChI":
@@ -46,7 +51,14 @@ def py2opsin(
     else:
         possiblity = get_close_matches(
             output_format,
-            ["SMILES", "CML", "InChI", "StdInChI", "StdInChIKey"],
+            [
+                "SMILES",
+                "CML",
+                "InChI",
+                "StdInChI",
+                "StdInChIKey",
+                "ExtendedSMILES",
+            ],
             n=1,
         )
         addendum = (
@@ -61,7 +73,10 @@ def py2opsin(
     # write the input to a text file
     temp_f = "py2opsin_temp_input.txt"
     with open(temp_f, "w") as file:
-        file.write(chemical_name)
+        if type(chemical_name) is str:
+            file.write(chemical_name)
+        else:
+            file.writelines("\n".join(chemical_name) + "\n")
 
     # add the temporary file to the args
     arg_list.append(temp_f)
@@ -86,7 +101,19 @@ def py2opsin(
     # parse and return the result
     try:
         result.check_returncode()
-        return result.stdout.decode(encoding=sys.stdout.encoding).strip("\n")
+        if type(chemical_name) is str:
+            return (
+                result.stdout.decode(encoding=sys.stdout.encoding)
+                .strip("\n")
+                .strip("\r")
+            )
+        else:
+            return (
+                result.stdout.decode(encoding=sys.stdout.encoding)
+                .strip("\r")
+                .split("\n")[0:-1]  # ignore newline at file end
+            )
+
     except Exception as e:
         warnings.warn("Unexpected error occured! " + e)
         return False
