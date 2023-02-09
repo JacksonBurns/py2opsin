@@ -2,7 +2,7 @@ import os
 import sys
 import unittest
 
-# from py2opsin import py2opsin
+from py2opsin import py2opsin
 
 
 class Test_py2opsin(unittest.TestCase):
@@ -12,13 +12,20 @@ class Test_py2opsin(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
-        return
+        self.jar_path = os.path.join(
+            os.getcwd(),
+            "opsin-cli-2.7.0-jar-with-dependencies.jar",
+        )
+        self.chemical_names = (
+            "ethane",
+            "methane",
+            "water",
+        )
 
-    def test_placeholder(self):
-        """
-        """
-        self.assertTrue(1+1 == 2)
+    def test_name_to_smiles(self):
+        """ """
+        py2opsin()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
