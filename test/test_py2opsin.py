@@ -21,7 +21,7 @@ class Test_py2opsin(unittest.TestCase):
             "ethane",
             "water",
             "phenylalanine",
-            "(2S)-2-azaniumyl-3-phenylpropanoate"
+            "(2S)-2-azaniumyl-3-phenylpropanoate",
         )
 
         self.chemical_smiles = (
@@ -54,7 +54,7 @@ class Test_py2opsin(unittest.TestCase):
 
         self.chemical_extendedsmiles = (
             "CC |$_AV:1;2$|",
-            "O |$_AV:O$|"
+            "O |$_AV:O$|",
             "N[C@@H](CC1=CC=CC=C1)C(=O)O |$_AV:N;alpha;beta;1;2;3;4;5;6;;O';O$|",
             "[NH3+][C@H](C(=O)[O-])CC1=CC=CC=C1 |$_AV:1;2;1;O';O;3;1;2;3;4;5;6$|",
         )
@@ -100,38 +100,37 @@ class Test_py2opsin(unittest.TestCase):
             opsin_smiles = py2opsin(test_info["name"])
             self.assertEqual(opsin_smiles, test_info["smiles"])
 
-    # def test_name_to_extendedsmiles(self):
-    #     """
-    #     Tests converting IUPAC names to Extended SMILES
-    #     """
-    #     for test_info in self.chemical_info:
-    #          opsin_smiles = py2opsin(test_info['name'], output_format = "extendedsmi")
-    #          self.assertEqual(opsin_smiles, test_info['extendedsmiles'])
+    def test_name_to_extendedsmiles(self):
+        """
+        Tests converting IUPAC names to Extended SMILES
+        """
+        for test_info in self.chemical_info:
+            opsin_smiles = py2opsin(test_info["name"], output_format="ExtendedSMILES")
+            self.assertEqual(opsin_smiles, test_info["extendedsmiles"])
 
     def test_name_to_stdinchi(self):
-        """ 
+        """
         Tests converting IUPAC names to standard InChI
         """
         for test_info in self.chemical_info:
-            opsin_smiles = py2opsin(test_info['name'], output_format = "StdInChI")
-            self.assertEqual(opsin_smiles, test_info['stdinchi'])
+            opsin_smiles = py2opsin(test_info["name"], output_format="StdInChI")
+            self.assertEqual(opsin_smiles, test_info["stdinchi"])
 
     def test_name_to_stdinchikey(self):
-        """ 
+        """
         Tests converting IUPAC names to standard InChI keys
         """
         for test_info in self.chemical_info:
-            opsin_smiles = py2opsin(test_info['name'], output_format = "StdInChIKey")
-            self.assertEqual(opsin_smiles, test_info['stdinchikey'])
-
+            opsin_smiles = py2opsin(test_info["name"], output_format="StdInChIKey")
+            self.assertEqual(opsin_smiles, test_info["stdinchikey"])
 
     def test_name_to_inchi_fixedh(self):
-        """ 
+        """
         Tests converting IUPAC names to standard InChI with fixed H
         """
         for test_info in self.chemical_info:
-            opsin_smiles = py2opsin(test_info['name'], output_format = "InChI")
-            self.assertEqual(opsin_smiles, test_info['inchi_fixedH'])
+            opsin_smiles = py2opsin(test_info["name"], output_format="InChI")
+            self.assertEqual(opsin_smiles, test_info["inchi_fixedH"])
 
     # def test_load_file(self):
     #     filename = os.path.join(os.getcwd(), "data", "example.txt")
@@ -150,13 +149,13 @@ class Test_py2opsin(unittest.TestCase):
         Test whether py2opsin can handle multiple arguments passed to it
         """
         test_inchi = py2opsin(
-            chemical_name = 'ethane',
-            output_format = 'InChI',
-            allow_acid = True,
-            allow_radicals = True,
-            allow_bad_stereo = True,
-            wildcard_radicals = True,
-            )
+            chemical_name="ethane",
+            output_format="InChI",
+            allow_acid=True,
+            allow_radicals=True,
+            allow_bad_stereo=True,
+            wildcard_radicals=True,
+        )
 
         self.assertEqual(test_inchi, "InChI=1/C2H6/c1-2/h1-2H3")
 
