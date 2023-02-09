@@ -6,13 +6,13 @@ from setuptools import setup, find_packages
 
 def read(rel_path):
     here = os.path.abspath(os.path.dirname(__file__))
-    with codecs.open(os.path.join(here, rel_path), 'r') as fp:
+    with codecs.open(os.path.join(here, rel_path), "r") as fp:
         return fp.read()
 
 
 def get_version(rel_path):
     for line in read(rel_path).splitlines():
-        if line.startswith('__version__'):
+        if line.startswith("__version__"):
             delim = '"' if '"' in line else "'"
             return line.split(delim)[1]
     else:
@@ -26,13 +26,13 @@ cwd = pathlib.Path(__file__).parent
 README = (cwd / "README.md").read_text()
 
 setup(
-    name="blpyproj",
-    version=get_version("blankpythonproject/__init__.py"),
-    description="Catchy slogan.",
+    name="py2opsin",
+    version=get_version("py2opsin/__init__.py"),
+    description="Simple Python interface to OPSIN: Open Parser for Systematic IUPAC nomenclature",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/JacksonBurns/blank-python-project",
-    author="Jackson Burns",
+    url="https://github.com/JacksonBurns/py2opsin",
+    author="Jackson Burns, Jonathan Zheng",
     license="MIT",
     classifiers=["Programming Language :: Python :: 3"],
     install_requires=read("requirements.txt").split("\n"),

@@ -1,10 +1,10 @@
-blank-python-project
+py2opsin
 ====================
 
 .. toctree::
    :maxdepth: 4
 
-   blankpythonproject
+   py2opsin
    setup
    start_project
    test
