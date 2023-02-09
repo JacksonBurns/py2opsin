@@ -86,7 +86,9 @@ def py2opsin(
     # parse and return the result
     try:
         result.check_returncode()
-        return result.stdout.decode(encoding=sys.stdout.encoding).strip("\n")
+        return (
+            result.stdout.decode(encoding=sys.stdout.encoding).strip("\n").strip("\r")
+        )
     except Exception as e:
         warnings.warn("Unexpected error occured! " + e)
         return False
