@@ -143,7 +143,7 @@ class Test_py2opsin(unittest.TestCase):
         for test_info in self.chemical_info:
             opsin_inchi = py2opsin(test_info["name"], output_format="InChI")
             self.assertEqual(opsin_inchi, test_info["inchi_fixedH"])
-        
+
         test_list_inchi = py2opsin(self.chemical_names, output_format="InChI")
         self.assertEqual(test_list_inchi, list(self.chemical_inchi_fixedH))
 
@@ -182,7 +182,7 @@ class Test_py2opsin(unittest.TestCase):
         Test whether OPSIN will return a list if there is at least one failed translation
         """
         list_with_errors = ['methane', 'ethane', 'blah', 'water']
-        correct_list = ['C','CC','','O']
+        correct_list = ['C', 'CC', '', 'O']
         smiles_list = py2opsin(list_with_errors)
         self.assertEqual(smiles_list, correct_list)
 
