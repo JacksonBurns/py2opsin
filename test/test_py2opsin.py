@@ -100,6 +100,9 @@ class Test_py2opsin(unittest.TestCase):
             opsin_smiles = py2opsin(test_info["name"])
             self.assertEqual(opsin_smiles, test_info["smiles"])
 
+        test_list_smiles = py2opsin(self.chemical_names)
+        self.assertEqual(test_list_smiles, list(self.chemical_smiles))
+
     def test_name_to_extendedsmiles(self):
         """
         Tests converting IUPAC names to Extended SMILES
@@ -107,6 +110,9 @@ class Test_py2opsin(unittest.TestCase):
         for test_info in self.chemical_info:
             opsin_smiles = py2opsin(test_info["name"], output_format="ExtendedSMILES")
             self.assertEqual(opsin_smiles, test_info["extendedsmiles"])
+
+        test_list_extendedsmi = py2opsin(self.chemical_names, output_format="ExtendedSMILES")
+        self.assertEqual(test_list_extendedsmi, list(self.chemical_extendedsmiles))
 
     def test_name_to_stdinchi(self):
         """
@@ -116,6 +122,9 @@ class Test_py2opsin(unittest.TestCase):
             opsin_smiles = py2opsin(test_info["name"], output_format="StdInChI")
             self.assertEqual(opsin_smiles, test_info["stdinchi"])
 
+        test_list_stdinchis = py2opsin(self.chemical_names, output_format="StdInChI")
+        self.assertEqual(test_list_stdinchis, list(self.chemical_stdinchis))
+
     def test_name_to_stdinchikey(self):
         """
         Tests converting IUPAC names to standard InChI keys
@@ -124,25 +133,34 @@ class Test_py2opsin(unittest.TestCase):
             opsin_smiles = py2opsin(test_info["name"], output_format="StdInChIKey")
             self.assertEqual(opsin_smiles, test_info["stdinchikey"])
 
+        test_list_stdinchikeys = py2opsin(self.chemical_names, output_format="StdInChIKey")
+        self.assertEqual(test_list_stdinchikeys, list(self.chemical_stdinchikeys))
+
     def test_name_to_inchi_fixedh(self):
         """
         Tests converting IUPAC names to standard InChI with fixed H
         """
         for test_info in self.chemical_info:
-            opsin_smiles = py2opsin(test_info["name"], output_format="InChI")
-            self.assertEqual(opsin_smiles, test_info["inchi_fixedH"])
+            opsin_inchi = py2opsin(test_info["name"], output_format="InChI")
+            self.assertEqual(opsin_inchi, test_info["inchi_fixedH"])
+
+        test_list_inchi = py2opsin(self.chemical_names, output_format="InChI")
+        self.assertEqual(test_list_inchi, list(self.chemical_inchi_fixedH))
+
+    def test_name_to_cml(self):
+        """
+        Tests converting IUPAC names to CML format
+        """
+        opsin_cml = py2opsin("ethane", output_format="CML")
+        data_path = os.path.join(os.getcwd(), "test", "data", "cml_test.cml")
+        with open(data_path, encoding="unicode_escape") as f:
+            test_cml = f.readlines()[0]
+
+        self.assertEqual(opsin_cml, test_cml)
 
     # def test_load_file(self):
     #     filename = os.path.join(os.getcwd(), "data", "example.txt")
     #     predictions = py2opsin(filename)
-
-    def test_load_list(self):
-        """
-        Test ability to load in a list containing multiple SMILES strings
-        """
-        chemical_list = list(self.chemical_names)
-        smiles_list = py2opsin(chemical_list)
-        self.assertEqual(smiles_list, list(self.chemical_smiles))
 
     def test_allow_multiple_options(self):
         """
@@ -158,6 +176,15 @@ class Test_py2opsin(unittest.TestCase):
         )
 
         self.assertEqual(test_inchi, "InChI=1/C2H6/c1-2/h1-2H3")
+
+    def test_list_with_errors(self):
+        """
+        Test whether OPSIN will return a list if there is at least one failed translation
+        """
+        list_with_errors = ['methane', 'ethane', 'blah', 'water']
+        correct_list = ['C', 'CC', '', 'O']
+        smiles_list = py2opsin(list_with_errors)
+        self.assertEqual(smiles_list, correct_list)
 
     # def test_output_to_file(self):
     #     """
