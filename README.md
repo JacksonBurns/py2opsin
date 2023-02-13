@@ -2,7 +2,7 @@
 <h3 align="center">Simple Python interface to OPSIN: Open Parser for Systematic IUPAC nomenclature</h3>
 
 <p align="center">  
-  <img alt="py2opsinlogo" src="https://github.com/JacksonBurns/py2opsin/blob/main/py2opsin_logo.png">
+  <img alt="py2opsin demo" src="https://github.com/JacksonBurns/py2opsin/blob/main/py2opsin_demo.gif">
 </p> 
 <p align="center">
   <img alt="GitHub Repo Stars" src="https://img.shields.io/github/stars/JacksonBurns/py2opsin?style=social">
