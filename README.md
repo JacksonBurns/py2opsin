@@ -44,13 +44,13 @@ smiles_str = "CC"
 The result is returned as a Python string, or False if an unexpected error occurs when calling OPSIN. If a list of IUPAC names is provided, a list if returned.
 
 Arguments:
-    chemical_name (str): IUPAC name of chemical as a Python string, or a list of strings.
-    output_format (str, optional): One of "SMILES", "CML", "InChI", "StdInChI", or "StdInChIKey". Defaults to "SMILES".
-    allow_acid (bool, optional): Allow interpretation of acids. Defaults to False.
-    allow_radicals (bool, optional): Enable radical interpretation. Defaults to False.
-    allow_bad_stereo (bool, optional): Allow OPSIN to ignore uninterpreatable stereochem. Defaults to False.
-    wildcard_radicals (bool, optional): Output radicals as wildcards. Defaults to False.
-    jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "opsin-cli.jar" which is distributed with py2opsin.
+ - chemical_name (str): IUPAC name of chemical as a Python string, or a list of strings.
+ - output_format (str, optional): One of "SMILES", "CML", "InChI", "StdInChI", or "StdInChIKey". Defaults to "SMILES".
+ - allow_acid (bool, optional): Allow interpretation of acids. Defaults to False.
+ - allow_radicals (bool, optional): Enable radical interpretation. Defaults to False.
+ - allow_bad_stereo (bool, optional): Allow OPSIN to ignore uninterpreatable stereochem. Defaults to False.
+ - wildcard_radicals (bool, optional): Output radicals as wildcards. Defaults to False.
+ - jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "opsin-cli.jar" which is distributed with py2opsin.
 
 ## License
 `OPSIN` and `py2opsin` are both distributed under the MIT license.
