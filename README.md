@@ -1,5 +1,5 @@
 <h1 align="center">py2opsin</h1> 
-<h3 align="center">Simple Python interface to OPSIN: Open Parser for Systematic IUPAC nomenclature</h3>
+<h3 align="center">Simple Python interface to <a href="https://github.com/dan2097/opsin">OPSIN: Open Parser for Systematic IUPAC nomenclature</a></h3>
 
 <p align="center">
   <img alt="GitHub Repo Stars" src="https://img.shields.io/github/stars/JacksonBurns/py2opsin?style=social">
@@ -12,11 +12,8 @@
   <img alt="py2opsin demo" src="https://github.com/JacksonBurns/py2opsin/blob/main/py2opsin_demo.gif">
 </p> 
 
-## Online Documentation
-[Click here to read the documentation](https://JacksonBurns.github.io/py2opsin/)
-
 ## Installation
-`py2opsin` can be installed with `pip install py2opsin`. It has _zero_ dependencies and should work inside any environment running modern Python.
+`py2opsin` can be installed with `pip install py2opsin`. It has _zero_ dependencies (`OPSIN v2.7.0` is included in the PyPI package) and should work inside any environment running modern Python.
 
 ## Usage
 Command-line arguments available in `OPSIN` can be passed through to `py2opsin`:
@@ -41,7 +38,7 @@ smiles_str = "CC"
 )
 ```
 
-The result is returned as a Python string, or False if an unexpected error occurs when calling OPSIN. If a list of IUPAC names is provided, a list if returned.
+The result is returned as a Python string, or False if an unexpected error occurs when calling OPSIN. If a list of IUPAC names is provided, a list is returned. It is __highly__ reccomended to use `py2opsin` in this manner if you need to resolve any more than a couple names -- the performance cost of running `OPSIN` from Python one name at a time is significant (~5 seconds/moleule individually, milliseconds otherwise).
 
 Arguments:
  - chemical_name (str): IUPAC name of chemical as a Python string, or a list of strings.
@@ -51,6 +48,9 @@ Arguments:
  - allow_bad_stereo (bool, optional): Allow OPSIN to ignore uninterpreatable stereochem. Defaults to False.
  - wildcard_radicals (bool, optional): Output radicals as wildcards. Defaults to False.
  - jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "opsin-cli.jar" which is distributed with py2opsin.
+
+## Online Documentation
+[Click here to read the documentation](https://JacksonBurns.github.io/py2opsin/)
 
 ## License
 `OPSIN` and `py2opsin` are both distributed under the MIT license.
