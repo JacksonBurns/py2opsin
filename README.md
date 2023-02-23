@@ -3,9 +3,9 @@
 
 <p align="center">
   <img alt="GitHub Repo Stars" src="https://img.shields.io/github/stars/JacksonBurns/py2opsin?style=social">
-  <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/py2opsin">
-  <img alt="PyPI" src="https://img.shields.io/pypi/v/py2opsin">
+  <img alt="Lifetime Downloads" src="https://static.pepy.tech/personalized-badge/py2opsin?period=total&units=none&left_color=grey&right_color=red&left_text=Lifetime%20Downloads">
   <img alt="PyPI - License" src="https://img.shields.io/github/license/JacksonBurns/py2opsin">
+  <img alt="PyPI" src="https://img.shields.io/pypi/v/py2opsin">
 </p>
 
 <p align="center">  
