@@ -38,7 +38,7 @@ smiles_str = "CC"
 )
 ```
 
-The result is returned as a Python string, or False if an unexpected error occurs when calling OPSIN. If a list of IUPAC names is provided, a list is returned. It is __highly__ reccomended to use `py2opsin` in this manner if you need to resolve any more than a couple names -- the performance cost of running `OPSIN` from Python one name at a time is significant (~5 seconds/moleule individually, milliseconds otherwise).
+The result is returned as a Python string, or False if an unexpected error occurs when calling OPSIN. If a list of IUPAC names is provided, a list is returned. It is __highly__ reccomended to use `py2opsin` in this manner if you need to resolve any more than a couple names -- the performance cost of running `OPSIN` from Python one name at a time is significant (~5 seconds/molecule individually, milliseconds otherwise).
 
 Arguments:
  - chemical_name (str): IUPAC name of chemical as a Python string, or a list of strings.
