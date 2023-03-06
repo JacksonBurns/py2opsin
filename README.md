@@ -6,6 +6,7 @@
   <img alt="Lifetime Downloads" src="https://static.pepy.tech/personalized-badge/py2opsin?period=total&units=none&left_color=grey&right_color=red&left_text=Lifetime%20Downloads">
   <img alt="PyPI - License" src="https://img.shields.io/github/license/JacksonBurns/py2opsin">
   <img alt="PyPI" src="https://img.shields.io/pypi/v/py2opsin">
+  <img alt="Run Tests" src="https://github.com/JacksonBurns/py2opsin/actions/workflows/run_tests.yml/badge.svg?branch=main&event=schedule">
 </p>
 
 <p align="center">  
