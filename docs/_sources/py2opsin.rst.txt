@@ -1,13 +1,13 @@
-test package
-============
+py2opsin package
+================
 
 Submodules
 ----------
 
-test.test\_py2opsin module
---------------------------
+py2opsin.py2opsin module
+------------------------
 
-.. automodule:: test.test_py2opsin
+.. automodule:: py2opsin.py2opsin
    :members:
    :undoc-members:
    :show-inheritance:
@@ -15,7 +15,7 @@ test.test\_py2opsin module
 Module contents
 ---------------
 
-.. automodule:: test
+.. automodule:: py2opsin
    :members:
    :undoc-members:
    :show-inheritance:
