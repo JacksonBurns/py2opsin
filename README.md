@@ -51,7 +51,7 @@ Arguments:
  - jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "opsin-cli.jar" which is distributed with py2opsin.
 
 ## Examples
- - Jeremy Monat's ([@bertiewooster](https://github.com/bertiewooster)) fantastic [blog post](https://bertiewooster.github.io/2023/03/10/Revisiting-a-Classic-Cheminformatics-Paper-The-Wiener-Index.html) using `py2opsin` to help explore the Wiender Index by enabling translation from IUPAC names into molecules directly from the original paper.
+ - Jeremy Monat's ([@bertiewooster](https://github.com/bertiewooster)) fantastic [blog post](https://bertiewooster.github.io/2023/03/10/Revisiting-a-Classic-Cheminformatics-Paper-The-Wiener-Index.html) using `py2opsin` to help explore the Wiener Index by enabling translation from IUPAC names into molecules directly from the original paper.
 
 ## Online Documentation
 [Click here to read the documentation](https://JacksonBurns.github.io/py2opsin/)
