@@ -399,12 +399,17 @@ class Test_py2opsin_performance(unittest.TestCase):
         smiles_strings = []
         pubchempy_start = time.time()
         for compound in self.compound_list:
+            # HTTP errors can happen
             for attempt in range(3):
                 try:
                     result = get_compounds(compound, "name")
                     break
                 except PubChemHTTPError:
                     pass
+            # could possibly never get server access
+            if attempt == 2:
+                smiles_strings.append(None)
+                continue
             try:
                 smiles_strings.append(result[0].isomeric_smiles)
             except IndexError:
