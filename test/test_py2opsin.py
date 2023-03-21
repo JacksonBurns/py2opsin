@@ -111,7 +111,9 @@ class Test_py2opsin(unittest.TestCase):
             opsin_smiles = py2opsin(test_info["name"], output_format="ExtendedSMILES")
             self.assertEqual(opsin_smiles, test_info["extendedsmiles"])
 
-        test_list_extendedsmi = py2opsin(self.chemical_names, output_format="ExtendedSMILES")
+        test_list_extendedsmi = py2opsin(
+            self.chemical_names, output_format="ExtendedSMILES"
+        )
         self.assertEqual(test_list_extendedsmi, list(self.chemical_extendedsmiles))
 
     def test_name_to_stdinchi(self):
@@ -133,7 +135,9 @@ class Test_py2opsin(unittest.TestCase):
             opsin_smiles = py2opsin(test_info["name"], output_format="StdInChIKey")
             self.assertEqual(opsin_smiles, test_info["stdinchikey"])
 
-        test_list_stdinchikeys = py2opsin(self.chemical_names, output_format="StdInChIKey")
+        test_list_stdinchikeys = py2opsin(
+            self.chemical_names, output_format="StdInChIKey"
+        )
         self.assertEqual(test_list_stdinchikeys, list(self.chemical_stdinchikeys))
 
     def test_name_to_inchi_fixedh(self):
@@ -158,10 +162,6 @@ class Test_py2opsin(unittest.TestCase):
 
         self.assertEqual(opsin_cml, test_cml)
 
-    # def test_load_file(self):
-    #     filename = os.path.join(os.getcwd(), "data", "example.txt")
-    #     predictions = py2opsin(filename)
-
     def test_allow_multiple_options(self):
         """
         Test whether py2opsin can handle multiple arguments passed to it
@@ -181,15 +181,10 @@ class Test_py2opsin(unittest.TestCase):
         """
         Test whether OPSIN will return a list if there is at least one failed translation
         """
-        list_with_errors = ['methane', 'ethane', 'blah', 'water']
-        correct_list = ['C', 'CC', '', 'O']
+        list_with_errors = ["methane", "ethane", "blah", "water"]
+        correct_list = ["C", "CC", "", "O"]
         smiles_list = py2opsin(list_with_errors)
         self.assertEqual(smiles_list, correct_list)
-
-    # def test_output_to_file(self):
-    #     """
-    #     Test whether results can be successfully saved to a file
-    #     """
 
     #     pass
 
