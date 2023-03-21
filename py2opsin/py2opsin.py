@@ -1,9 +1,9 @@
-import importlib
 import os
 import subprocess
 import sys
 import warnings
 from difflib import get_close_matches
+from importlib import resources
 from typing import Union
 
 
@@ -33,8 +33,7 @@ def py2opsin(
     """
     if jar_fpath == "default":
         jar_fpath = (
-            importlib.resources.files("py2opsin")
-            / "opsin-cli-2.7.0-jar-with-dependencies.jar"
+            resources.files("py2opsin") / "opsin-cli-2.7.0-jar-with-dependencies.jar"
         )
 
     # default arguments to start
