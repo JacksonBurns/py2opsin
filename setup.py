@@ -36,6 +36,6 @@ setup(
     license="MIT",
     classifiers=["Programming Language :: Python :: 3"],
     install_requires=[],
-    packages=find_packages(),
+    packages=find_packages(exclude=["test*", "docs*", "examples*"]),
     include_package_data=True,
 )
