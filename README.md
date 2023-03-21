@@ -50,11 +50,45 @@ Arguments:
  - wildcard_radicals (bool, optional): Output radicals as wildcards. Defaults to False.
  - jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "opsin-cli.jar" which is distributed with py2opsin.
 
+
+## Speedup 50x from `pubchempy`
+`py2opsin` runs locally and is smaller in scope in what it provides, which makes it __dramatically__ faster at resolving identifiers. In the code block below, the call to `py2opsin` will execute ~58x faster than an equivalent call to `puchempy`:
+```python
+import time
+
+from pubchempy import PubChemHTTPError, get_compounds
+from py2opsin import py2opsin
+
+compound_list = [
+    "dienochlor",
+    "kepone",
+...
+    "ditechnetium decacarbonyl",
+]
+
+for compound in compound_list:
+    result = get_compounds(compound, "name")
+
+smiles_strings = py2opsin(compound_list)
+```
+
+
 ## Examples
  - Jeremy Monat's ([@bertiewooster](https://github.com/bertiewooster)) fantastic [blog post](https://bertiewooster.github.io/2023/03/10/Revisiting-a-Classic-Cheminformatics-Paper-The-Wiener-Index.html) using `py2opsin` to help explore the Wiener Index by enabling translation from IUPAC names into molecules directly from the original paper.
 
 ## Online Documentation
 [Click here to read the documentation](https://JacksonBurns.github.io/py2opsin/)
+
+## Contributing & Developer Notes
+Pull Requests, Bug Reports, and all Contributions are welcome! Please use the appropriate issue or pull request template when making a contribution.
+
+When submitting a PR, please mark your PR with the "PR Ready for Review" label when you are finished making changes so that the GitHub actions bots can work their magic!
+
+### Developer Install
+
+To contribute to the `py2opsin` source code, start by cloning the repository (i.e. `git clone git@github.com:JacksonBurns/py2opsin.git`) and then inside the repository run `pip install -e .[dev]`. This will set you up with all the required dependencies to run `astartes` and conform to our formatting standards (`black` and `isort`), which you can configure to run automatically in vscode [like this](https://marcobelo.medium.com/setting-up-python-black-on-visual-studio-code-5318eba4cd00#:~:text=Go%20to%20settings%20in%20your,%E2%80%9D%20and%20select%20%E2%80%9Cblack%E2%80%9D.).
+
+__Note for Windows Powershell or MacOS Catalina or newer__: On these systems the command line will complain about square brackets, so you will need to double quote the `molecules` command (i.e. `pip install -e ".
 
 ## License
 `OPSIN` and `py2opsin` are both distributed under the MIT license.
