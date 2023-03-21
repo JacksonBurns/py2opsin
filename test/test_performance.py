@@ -399,10 +399,12 @@ class Test_py2opsin_performance(unittest.TestCase):
         smiles_strings = []
         pubchempy_start = time.time()
         for compound in self.compound_list:
-            try:
-                result = get_compounds(compound, "name")
-            except PubChemHTTPError:
-                smiles_strings.append(None)
+            for attempt in range(3):
+                try:
+                    result = get_compounds(compound, "name")
+                    break
+                except PubChemHTTPError:
+                    pass
             try:
                 smiles_strings.append(result[0].isomeric_smiles)
             except IndexError:
@@ -415,7 +417,10 @@ class Test_py2opsin_performance(unittest.TestCase):
         py2opsin_exe = time.time() - py2opsin_start
         self.assertTrue(
             pubchempy_exe > py2opsin_exe,
-            "py2opsin should be faster than pubchempy",
+            "py2opsin should be faster than pubchempy (py2opsin took {:.2f} seconds, pubchempy took {:.2f} seconds)".format(
+                py2opsin_exe,
+                pubchempy_exe,
+            ),
         )
 
 
