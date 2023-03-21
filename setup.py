@@ -1,7 +1,8 @@
-import os.path
 import codecs
+import os.path
 import pathlib
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 
 
 def read(rel_path):
@@ -36,6 +37,7 @@ setup(
     license="MIT",
     classifiers=["Programming Language :: Python :: 3"],
     install_requires=[],
+    extras_require={"dev": ["pubchempy", "black", "pytest", "isort"]},
     packages=find_packages(
         exclude=["test*", "docs*", "examples*"], include=["py2opsin*"]
     ),
