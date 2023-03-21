@@ -36,6 +36,8 @@ setup(
     license="MIT",
     classifiers=["Programming Language :: Python :: 3"],
     install_requires=[],
-    packages=find_packages(exclude=["test*", "docs*", "examples*"]),
+    packages=find_packages(
+        exclude=["test*", "docs*", "examples*"], include=["py2opsin*"]
+    ),
     include_package_data=True,
 )
