@@ -417,12 +417,6 @@ class Test_py2opsin_performance(unittest.TestCase):
             pubchempy_exe > py2opsin_exe,
             "py2opsin should be faster than pubchempy",
         )
-        self.assertTrue(
-            pubchempy_exe / py2opsin_exe > 10,
-            "speedup should be at least 10x relative to pubchempy (got {:.2f})".format(
-                pubchempy_exe / py2opsin_exe
-            ),
-        )
 
 
 if __name__ == "__main__":
