@@ -3,8 +3,12 @@ import subprocess
 import sys
 import warnings
 from difflib import get_close_matches
-from importlib import resources
 from typing import Union
+
+try:
+    from importlib.resources import files as pkg_fopen
+except:
+    from pkg_resources import resource_filename as pkg_fopen
 
 
 def py2opsin(
@@ -32,9 +36,7 @@ def py2opsin(
         str: Species in requested format, or False if not found or an error occoured. List of strings if input is list.
     """
     if jar_fpath == "default":
-        jar_fpath = (
-            resources.files("py2opsin") / "opsin-cli-2.7.0-jar-with-dependencies.jar"
-        )
+        jar_fpath = pkg_fopen("py2opsin") / "opsin-cli-2.7.0-jar-with-dependencies.jar"
 
     # default arguments to start
     arg_list = ["java", "-jar", jar_fpath]
