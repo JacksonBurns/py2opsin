@@ -419,7 +419,9 @@ class Test_py2opsin_performance(unittest.TestCase):
         )
         self.assertTrue(
             pubchempy_exe / py2opsin_exe > 50,
-            "speedup should be at least 50x relative to pubchempy",
+            "speedup should be at least 50x relative to pubchempy (got {:.2f})".format(
+                pubchempy_exe / py2opsin_exe
+            ),
         )
 
 
