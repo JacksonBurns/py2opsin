@@ -7,7 +7,7 @@ from typing import Union
 
 try:
     from importlib.resources import files as pkg_fopen
-except:
+except AttributeError:
     from pkg_resources import resource_filename as pkg_fopen
 
 
