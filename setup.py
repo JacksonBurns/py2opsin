@@ -36,7 +36,8 @@ setup(
     author="Jackson Burns, Jonathan Zheng",
     license="MIT",
     classifiers=["Programming Language :: Python :: 3"],
-    install_requires=[],
+    python_requires=">=3.7",
+    install_requires=["typing_extensions; python_version<3.8"],
     extras_require={"dev": ["pubchempy", "black", "pytest", "isort"]},
     packages=find_packages(
         exclude=["test*", "docs*", "examples*"], include=["py2opsin*"]

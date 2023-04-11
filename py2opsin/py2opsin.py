@@ -3,9 +3,16 @@ import subprocess
 import sys
 import warnings
 from difflib import get_close_matches
-from typing import Union, Literal
+from typing import Union
 
 try:
+    # python < 3.8
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
+
+try:
+    # python < 3.9
     from importlib.resources import files
 
     pkg_fopen = lambda fname: files("py2opsin") / fname
