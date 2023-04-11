@@ -186,8 +186,6 @@ class Test_py2opsin(unittest.TestCase):
         smiles_list = py2opsin(list_with_errors)
         self.assertEqual(smiles_list, correct_list)
 
-    #     pass
-
 
 if __name__ == "__main__":
     unittest.main()
