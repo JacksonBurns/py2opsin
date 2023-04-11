@@ -3,7 +3,7 @@ import subprocess
 import sys
 import warnings
 from difflib import get_close_matches
-from typing import Union
+from typing import Union, Literal
 
 try:
     from importlib.resources import files
@@ -17,7 +17,14 @@ except ImportError:
 
 def py2opsin(
     chemical_name: Union[str, list],
-    output_format: str = "SMILES",
+    output_format: Literal[
+        "SMILES",
+        "ExtendedSMILES",
+        "CML",
+        "InChI",
+        "StdInChI",
+        "StdInChIKey",
+    ] = "SMILES",
     allow_acid: bool = False,
     allow_radicals: bool = False,
     allow_bad_stereo: bool = False,
