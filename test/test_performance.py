@@ -391,6 +391,10 @@ class Test_py2opsin_performance(unittest.TestCase):
             "ditechnetium decacarbonyl",
         ]
 
+    @unittest.skipIf(
+        sys.platform.startswith("win"),
+        "Skipping Performance test on Windows (see README).",
+    )
     def test_performance(self):
         """
         Test performance relative to pubchempy
