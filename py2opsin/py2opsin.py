@@ -15,6 +15,16 @@ except ImportError:
 
     pkg_fopen = lambda fname: resource_filename(__name__, fname)
 
+# check if java is installed
+try:
+    result = subprocess.run(["java"])
+    result.check_returncode()
+except CalledProcessError as cpe:
+    warnings.warn(
+        "Java may not be installed/accessible (java --version raised exception). "
+        "Java 8 or newer is required to use py2opsin. Original Error:\n" + cpe.stderr
+    )
+
 
 def py2opsin(
     chemical_name: Union[str, list],
@@ -40,18 +50,7 @@ def py2opsin(
     Returns:
         str: Species in requested format, or False if not found or an error ocurred. List of strings if input is list.
     """
-    # check if java is installed
-    try:
-        result = subprocess.run(["java", "--version"])
-        result.check_returncode()
-    except CalledProcessError as cpe:
-        warnings.warn(
-            "Java may not be installed/accessible (java --version raised exception). "
-            "Java 8 or newer is required to use py2opsin. Original Error:\n"
-            + cpe.stderr
-        )
-
-    # path to OPSIN
+    # path to OPSIN jar
     if jar_fpath == "default":
         jar_fpath = pkg_fopen("opsin-cli-2.7.0-jar-with-dependencies.jar")
 
