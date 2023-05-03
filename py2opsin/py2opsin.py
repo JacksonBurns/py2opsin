@@ -4,6 +4,7 @@ import sys
 import warnings
 from difflib import get_close_matches
 from typing import Union
+from subprocess import CalledProcessError
 
 try:
     from importlib.resources import files
@@ -13,6 +14,17 @@ except ImportError:
     from pkg_resources import resource_filename
 
     pkg_fopen = lambda fname: resource_filename(__name__, fname)
+
+
+# warn users potentially missing java at import time
+try:
+    result = subprocess.run(["java", "--version"])
+    result.check_returncode()
+except CalledProcessError as cpe:
+    raise RuntimeWarning(
+        "Java may not be installed/accessible (java --version raised exception)."
+        "Java 8 or newer is required to use py2opsin."
+    ) from cpe
 
 
 def py2opsin(
