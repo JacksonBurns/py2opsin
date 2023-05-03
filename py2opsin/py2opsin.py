@@ -37,7 +37,7 @@ def py2opsin(
         jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "default", which causes py2opsin to use its included jar.
 
     Returns:
-        str: Species in requested format, or False if not found or an error occoured. List of strings if input is list.
+        str: Species in requested format, or False if not found or an error ocurred. List of strings if input is list.
     """
     if jar_fpath == "default":
         jar_fpath = pkg_fopen("opsin-cli-2.7.0-jar-with-dependencies.jar")
@@ -134,7 +134,7 @@ def py2opsin(
             )
 
     except Exception as e:
-        warnings.warn("Unexpected error occured! " + e)
+        warnings.warn("Unexpected error ocurred! " + e)
         return False
     finally:
         os.remove(temp_f)
