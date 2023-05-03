@@ -17,7 +17,7 @@ except ImportError:
 
 # check if java is installed
 try:
-    result = subprocess.run(["java"])
+    result = subprocess.run(["java", "-version"], stdout=subprocess.DEVNULL)
     result.check_returncode()
 except CalledProcessError as cpe:
     warnings.warn(
