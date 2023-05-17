@@ -21,7 +21,7 @@ try:
     result.check_returncode()
 except CalledProcessError as cpe:
     warnings.warn(
-        "Java may not be installed/accessible (java --version raised exception). "
+        "Java may not be installed/accessible (java -version raised exception). "
         "Java 8 or newer is required to use py2opsin. Original Error:\n" + cpe.stderr,
         category=RuntimeWarning,
     )
