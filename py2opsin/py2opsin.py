@@ -104,9 +104,18 @@ def py2opsin(
     # do the call
     result = subprocess.run(
         arg_list,
-        stderr=subprocess.DEVNULL,
+        stderr=subprocess.PIPE,
         stdout=subprocess.PIPE,
     )
+
+    # warn user if any of the inputs could not be parsed
+    if result.stderr:
+        err_str = result.stderr.decode(encoding=sys.stderr.encoding)
+        warnings.warn(
+            "OPSIN raised the following error(s) while parsing:\n > "
+            + err_str.replace("\n", "\n > ", err_str.count("\n") - 1),
+            RuntimeWarning,
+        )
 
     # parse and return the result
     try:

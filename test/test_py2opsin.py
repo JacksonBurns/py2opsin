@@ -78,6 +78,11 @@ class Test_py2opsin(unittest.TestCase):
             )
         ]
 
+    def test_helpful_warning(self):
+        """Raise warnings when input cannot be parsed."""
+        with self.assertWarns(RuntimeWarning):
+            py2opsin(["Methane is an IUPAC Name", "I Have to Fly Planes"])
+
     def test_invalid_output_spec(self):
         """Invalid output specification should raise a runtime error."""
         with self.assertRaises(RuntimeError):
@@ -183,10 +188,9 @@ class Test_py2opsin(unittest.TestCase):
         """
         list_with_errors = ["methane", "ethane", "blah", "water"]
         correct_list = ["C", "CC", "", "O"]
-        smiles_list = py2opsin(list_with_errors)
+        with self.assertWarns(RuntimeWarning):
+            smiles_list = py2opsin(list_with_errors)
         self.assertEqual(smiles_list, correct_list)
-
-    #     pass
 
 
 if __name__ == "__main__":
