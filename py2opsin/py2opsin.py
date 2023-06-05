@@ -112,8 +112,8 @@ def py2opsin(
     if result.stderr:
         err_str = result.stderr.decode(encoding=sys.stderr.encoding)
         warnings.warn(
-            "OPSIN raised the following error(s) while parsing:\n > "
-            + err_str.replace("\n", "\n > ", err_str.count("\n") - 1),
+            "OPSIN raised the following error(s) while parsing:"
+            "\n > " + err_str.replace("\n", "\n > ", err_str.count("\n") - 1),
             RuntimeWarning,
         )
 
