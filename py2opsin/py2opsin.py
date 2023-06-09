@@ -21,12 +21,12 @@ try:
         ["java", "-version"],
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
+        check=True,
     )
-    result.check_returncode()
-except CalledProcessError as cpe:
+except Exception as e:
     warnings.warn(
         "Java may not be installed/accessible (java -version raised exception). "
-        "Java 8 or newer is required to use py2opsin. Original Error:\n" + cpe.stderr,
+        "Java 8 or newer is required to use py2opsin. Original Error:\n" + e.stderr,
         category=RuntimeWarning,
     )
 
