@@ -4,6 +4,7 @@ import sys
 import warnings
 from difflib import get_close_matches
 from typing import Union
+from subprocess import CalledProcessError
 
 try:
     # python < 3.8
@@ -20,6 +21,21 @@ except ImportError:
     from pkg_resources import resource_filename
 
     pkg_fopen = lambda fname: resource_filename(__name__, fname)
+
+# check if java is installed
+try:
+    result = subprocess.run(
+        ["java", "-version"],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        check=True,
+    )
+except Exception as e:
+    warnings.warn(
+        "Java may not be installed/accessible (java -version raised exception). "
+        "Java 8 or newer is required to use py2opsin. Original Error:\n" + repr(e),
+        category=RuntimeWarning,
+    )
 
 
 def py2opsin(
@@ -51,8 +67,9 @@ def py2opsin(
         jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "default", which causes py2opsin to use its included jar.
 
     Returns:
-        str: Species in requested format, or False if not found or an error occoured. List of strings if input is list.
+        str: Species in requested format, or False if not found or an error ocurred. List of strings if input is list.
     """
+    # path to OPSIN jar
     if jar_fpath == "default":
         jar_fpath = pkg_fopen("opsin-cli-2.7.0-jar-with-dependencies.jar")
 
@@ -118,9 +135,18 @@ def py2opsin(
     # do the call
     result = subprocess.run(
         arg_list,
-        stderr=subprocess.DEVNULL,
+        stderr=subprocess.PIPE,
         stdout=subprocess.PIPE,
     )
+
+    # warn user if any of the inputs could not be parsed
+    if result.stderr:
+        err_str = result.stderr.decode(encoding=sys.stderr.encoding)
+        warnings.warn(
+            "OPSIN raised the following error(s) while parsing:"
+            "\n > " + err_str.replace("\n", "\n > ", err_str.count("\n") - 1),
+            RuntimeWarning,
+        )
 
     # parse and return the result
     try:
@@ -139,7 +165,7 @@ def py2opsin(
             )
 
     except Exception as e:
-        warnings.warn("Unexpected error occured! " + e)
+        warnings.warn("Unexpected error ocurred! " + e)
         return False
     finally:
         os.remove(temp_f)
