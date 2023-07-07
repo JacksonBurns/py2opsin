@@ -19,8 +19,8 @@ class Test_py2opsin_performance(unittest.TestCase):
             os.getcwd(),
             "opsin-cli-2.7.0-jar-with-dependencies.jar",
         )
-        # list of 10 carbon molecules taken from wikipedia
-        # https://en.wikipedia.org/wiki/List_of_compounds_with_carbon_number_10
+        # list of molecules taken from IUPAC Dissociation Constants dataset
+        # https://zenodo.org/record/7236453
         self.compound_list = [
             'pyridine, 2-amino-',
             'pyridine, 3-iodo-',
