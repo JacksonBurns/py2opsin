@@ -7,6 +7,13 @@ from typing import Union
 from subprocess import CalledProcessError
 
 try:
+    # python < 3.8
+    from typing import Literal
+except ImportError:
+    from typing_extensions import Literal
+
+try:
+    # python < 3.9
     from importlib.resources import files
 
     pkg_fopen = lambda fname: files("py2opsin") / fname
@@ -33,7 +40,14 @@ except Exception as e:
 
 def py2opsin(
     chemical_name: Union[str, list],
-    output_format: str = "SMILES",
+    output_format: Literal[
+        "SMILES",
+        "ExtendedSMILES",
+        "CML",
+        "InChI",
+        "StdInChI",
+        "StdInChIKey",
+    ] = "SMILES",
     allow_acid: bool = False,
     allow_radicals: bool = False,
     allow_bad_stereo: bool = False,
