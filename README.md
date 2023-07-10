@@ -53,8 +53,8 @@ Arguments:
  - jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "opsin-cli.jar" which is distributed with py2opsin.
 
 
-## Speedup 50x from `pubchempy`
-`py2opsin` runs locally and is smaller in scope in what it provides, which makes it __dramatically__ faster at resolving identifiers. In the code block below, the call to `py2opsin` will execute ~58x faster than an equivalent call to `puchempy`:
+## Massive speedup from `pubchempy` for batch translations
+`py2opsin` runs locally and is smaller in scope in what it provides, which makes it __dramatically__ faster at resolving identifiers. In the code block below, the call to `py2opsin` will execute faster than an equivalent call to `pubchempy`:
 ```python
 import time
 
@@ -62,10 +62,10 @@ from pubchempy import PubChemHTTPError, get_compounds
 from py2opsin import py2opsin
 
 compound_list = [
-    "dienochlor",
-    "kepone",
+    "pyridine, 2-amino-",
+    "pyridine, 3-iodo-",
 ...
-    "ditechnetium decacarbonyl",
+    "aniline, 2,4,6-trinitro-",
 ]
 
 for compound in compound_list:
