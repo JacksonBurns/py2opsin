@@ -54,7 +54,7 @@ Arguments:
 
 
 ## Massive speedup from `pubchempy` for batch translations
-`py2opsin` runs locally and is smaller in scope in what it provides, which makes it __dramatically__ faster at resolving identifiers. In the code block below, the call to `py2opsin` will execute ~23 faster than an equivalent call to `pubchempy`:
+`py2opsin` runs locally and is smaller in scope in what it provides, which makes it __dramatically__ faster at resolving identifiers. In the code block below, the call to `py2opsin` will execute faster than an equivalent call to `pubchempy`:
 ```python
 import time
 
