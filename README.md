@@ -16,7 +16,7 @@
 ## Installation
 `py2opsin` can be installed with `pip install py2opsin`. It has _zero_ Python dependencies (`OPSIN v2.7.0` is included in the PyPI package) and should work inside any environment running modern Python. Java 8+ is required to run OPSIN.
 
-Try a demo of `py2opsin` live on your browser (no installation required!): [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/JacksonBurns/py2opsin/HEAD?labpath=examples%2Fpy2opsin_example.ipynb)
+Try a demo of `py2opsin` live on your browser (no installation required!): [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JacksonBurns/py2opsin/blob/main/examples/py2opsin_example.ipynb)
 
 ## Usage
 Command-line arguments available in `OPSIN` can be passed through to `py2opsin`:
