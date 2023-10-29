@@ -54,7 +54,7 @@ jobs:
             python=${{ matrix.python-version }}
       - name: Install Dependencies
         run: |
-          python -m pip install .
+          python -m pip install .[dev]
           python -m pip install coverage
       - name: Run Tests
         run: |
