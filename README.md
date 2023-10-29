@@ -14,7 +14,7 @@
 </p> 
 
 ## Installation
-`py2opsin` can be installed with `pip install py2opsin`. It has _zero_ Python dependencies (`OPSIN v2.7.0` is included in the PyPI package) and should work inside any environment running modern Python. Java 8+ is required to run OPSIN.
+`py2opsin` can be installed with `pip install py2opsin`. It has _zero_ Python dependencies (`OPSIN v2.8.0` is included in the PyPI package) and should work inside any environment running modern Python. Java 8+ is required to run OPSIN.
 
 Try a demo of `py2opsin` live on your browser (no installation required!): [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JacksonBurns/py2opsin/blob/main/examples/py2opsin_example.ipynb)
 
@@ -81,6 +81,17 @@ smiles_strings = py2opsin(compound_list)
 ## Online Documentation
 [Click here to read the documentation](https://JacksonBurns.github.io/py2opsin/)
 
+## Citation
+Please check [the OPSIN repository](https://github.com/dan2097/opsin#about-opsin) for the latest citation information, which as of October 2023 suggests citing this paper:
+```
+Chemical Name to Structure: OPSIN, an Open Source Solution
+Daniel M. Lowe, Peter T. Corbett, Peter Murray-Rust, Robert C. Glen
+Journal of Chemical Information and Modeling 2011 51 (3), 739-753
+```
+
+You may also see fit to mention that you used `py2opsin` to run `OPSIN`, but `py2opsin` itself isn't a significant scholarly effort and thus does not have a DOI.
+Providing a link to this GitHub repository along with the version of `py2opsin` used is sufficient.
+
 ## Contributing & Developer Notes
 Pull Requests, Bug Reports, and all Contributions are welcome! Please use the appropriate issue or pull request template when making a contribution.
 
@@ -90,9 +101,9 @@ When submitting a PR, please mark your PR with the "PR Ready for Review" label w
 
 To contribute to the `py2opsin` source code, start by cloning the repository (i.e. `git clone git@github.com:JacksonBurns/py2opsin.git`) and then inside the repository run `pip install -e .[dev]`. This will set you up with all the required dependencies to run `py2opsin` and conform to our formatting standards (`black` and `isort`), which you can configure to run automatically in vscode [like this](https://marcobelo.medium.com/setting-up-python-black-on-visual-studio-code-5318eba4cd00#:~:text=Go%20to%20settings%20in%20your,%E2%80%9D%20and%20select%20%E2%80%9Cblack%E2%80%9D.).
 
-Unit tests and performance tests can be executed with `pytest`, but note that performance tests are skipped on Windows due to speed issues with OPSIN on the platform.
+Unit and performance tests can then be executed with `pytest`.
 
-__Note for Windows Powershell or MacOS Catalina or newer__: On these systems the command line will complain about square brackets, so you will need to double quote the `molecules` command (i.e. `pip install -e ".
+__Note for Windows Powershell or MacOS Catalina or newer__: On these systems the command line will complain about square brackets, so you will need to double quote the install command (i.e. `pip install -e ".[dev]"`).
 
 ## License
 `OPSIN` and `py2opsin` are both distributed under the MIT license.
