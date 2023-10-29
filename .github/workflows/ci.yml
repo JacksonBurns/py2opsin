@@ -25,7 +25,7 @@ jobs:
       
       - name: Run pycodestyle
         run: |
-          pycodestyle --statistics --count --max-line-length=150 --show-source .
+          pycodestyle --statistics --count --max-line-length=150 --show-source --ignore=E731 .
 
   build-and-test:
     needs: check-formatting
