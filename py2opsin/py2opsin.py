@@ -71,7 +71,7 @@ def py2opsin(
     """
     # path to OPSIN jar
     if jar_fpath == "default":
-        jar_fpath = pkg_fopen("opsin-cli-2.7.0-jar-with-dependencies.jar")
+        jar_fpath = pkg_fopen("opsin-cli-2.8.0-jar-with-dependencies.jar")
 
     # default arguments to start
     arg_list = ["java", "-jar", jar_fpath]
