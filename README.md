@@ -38,10 +38,11 @@ smiles_str = "CC"
     allow_bad_stereo = False,
     wildcard_radicals = False,
     jar_fpath = "/path/to/opsin.jar",
+    tmp_fpath = "py2opsin_temp_input.txt",
 )
 ```
 
-The result is returned as a Python string, or False if an unexpected error occurs when calling OPSIN. If a list of IUPAC names is provided, a list is returned. It is __highly__ reccomended to use `py2opsin` in this manner if you need to resolve any more than a couple names -- the performance cost of running `OPSIN` from Python one name at a time is significant (~5 seconds/molecule individually, milliseconds otherwise).
+The result is returned as a Python string, or False if an unexpected error occurs when calling OPSIN. If a list of IUPAC names is provided, a list is returned. It is __highly__ recommended to use `py2opsin` in this manner if you need to resolve any more than a couple names -- the performance cost of running `OPSIN` from Python one name at a time is significant (~5 seconds/molecule individually, milliseconds otherwise).
 
 Arguments:
  - chemical_name (str): IUPAC name of chemical as a Python string, or a list of strings.
@@ -51,7 +52,10 @@ Arguments:
  - allow_bad_stereo (bool, optional): Allow OPSIN to ignore uninterpreatable stereochem. Defaults to False.
  - wildcard_radicals (bool, optional): Output radicals as wildcards. Defaults to False.
  - jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "opsin-cli.jar" which is distributed with py2opsin.
+ - tmp_fpath (str, optional): tmp_fpath (str, optional): Name for temporary file used for calling OPSIN. Defaults to "py2opsin_temp_input.txt". When multiprocessing, set this to a unique name for each process.
 
+> [!TIP]
+> `OPSIN` will already parallelize itself by creating multiple threads! Be wary when using `py2opsin` with multiprocessing to avoid spawning too many processes.
 
 ## Massive speedup from `pubchempy` for batch translations
 `py2opsin` runs locally and is smaller in scope in what it provides, which makes it __dramatically__ faster at resolving identifiers. In the code block below, the call to `py2opsin` will execute faster than an equivalent call to `pubchempy`:

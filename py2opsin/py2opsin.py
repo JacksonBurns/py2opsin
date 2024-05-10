@@ -53,6 +53,7 @@ def py2opsin(
     allow_bad_stereo: bool = False,
     wildcard_radicals: bool = False,
     jar_fpath: str = "default",
+    tmp_fpath: str = "py2opsin_temp_input.txt",
 ) -> str:
     """Simple passthrough to opsin, returning results as Python strings.
 
@@ -65,6 +66,8 @@ def py2opsin(
         allow_bad_stereo (bool, optional): Allow OPSIN to ignore uninterpreatable stereochem. Defaults to False.
         wildcard_radicals (bool, optional): Output radicals as wildcards. Defaults to False.
         jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "default", which causes py2opsin to use its included jar.
+        tmp_fpath (str, optional): Name for temporary file used for calling OPSIN. Defaults to "py2opsin_temp_input.txt".
+                                   When multiprocessing, set this to a unique name for each process.
 
     Returns:
         str: Species in requested format, or False if not found or an error ocurred. List of strings if input is list.
@@ -112,15 +115,14 @@ def py2opsin(
         )
 
     # write the input to a text file
-    temp_f = "py2opsin_temp_input.txt"
-    with open(temp_f, "w") as file:
+    with open(tmp_fpath, "w") as file:
         if type(chemical_name) is str:
             file.write(chemical_name)
         else:
             file.writelines("\n".join(chemical_name) + "\n")
 
     # add the temporary file to the args
-    arg_list.append(temp_f)
+    arg_list.append(tmp_fpath)
 
     # grab the optional boolean flags
     if allow_acid:
@@ -168,4 +170,4 @@ def py2opsin(
         warnings.warn("Unexpected error ocurred! " + e)
         return False
     finally:
-        os.remove(temp_f)
+        os.remove(tmp_fpath)

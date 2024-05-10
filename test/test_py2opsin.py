@@ -1,8 +1,14 @@
 import os
+import multiprocessing
 import sys
 import unittest
 
 from py2opsin import py2opsin
+
+
+# multiprocessing test function
+def _f(b):
+    return py2opsin(b[0], tmp_fpath=f"tmp_{b[1]}.txt")
 
 
 class Test_py2opsin(unittest.TestCase):
@@ -96,6 +102,12 @@ class Test_py2opsin(unittest.TestCase):
             str(helpful_error.exception),
             "Output format SMOLES is invalid. Did you mean 'SMILES'?",
         )
+
+    def test_multiprocessing(self):
+        """py2opsin should safely work when run with multiprocessing"""
+        with multiprocessing.Pool(2) as pool:
+            res = pool.map(_f, [("methanol", 0), ("ethanol", 1)])
+        self.assertEqual(res, ["CO", "C(C)O"])
 
     def test_name_to_smiles(self):
         """
