@@ -15,10 +15,6 @@ class Test_py2opsin_performance(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
-        self.jar_path = os.path.join(
-            os.getcwd(),
-            "opsin-cli-2.7.0-jar-with-dependencies.jar",
-        )
         # list of molecules taken from IUPAC Dissociation Constants dataset
         # https://zenodo.org/record/7236453
         self.compound_list = [
