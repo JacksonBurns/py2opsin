@@ -81,6 +81,7 @@ smiles_strings = py2opsin(compound_list)
 
 ## Examples
  - Jeremy Monat's ([@bertiewooster](https://github.com/bertiewooster)) fantastic [blog post](https://bertiewooster.github.io/2023/03/10/Revisiting-a-Classic-Cheminformatics-Paper-The-Wiener-Index.html) using `py2opsin` to help explore the Wiener Index by enabling translation from IUPAC names into molecules directly from the original paper.
+ - "Holistic chemical evaluation reveals pitfalls in reaction prediction models" by Gil et al. on [arXiv](https://arxiv.org/abs/2312.09004) uses `py2opsin` to help translate a large dataset, see their [code on GitHub](https://github.com/schwallergroup/choriso/blob/baa87aeb61aab170f3100596c070fcc046291455/notebooks/07_dictionnary_creation.ipynb).
 
 ## Online Documentation
 [Click here to read the documentation](https://JacksonBurns.github.io/py2opsin/)
