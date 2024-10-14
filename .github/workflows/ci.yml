@@ -60,7 +60,7 @@ jobs:
           timeout_minutes: 15
           shell: bash
           command: |
-            mamba run -n temp coverage run --source=. --omit=py2opsin/__init__.py,setup.py,test/* -m unittest discover
+            mamba run -n test coverage run --source=. --omit=py2opsin/__init__.py,setup.py,test/* -m unittest discover
       - name: Show Coverage
         run: |
           coverage report -m
