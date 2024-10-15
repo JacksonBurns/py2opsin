@@ -1,24 +1,25 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>test package &mdash; blankpythonproject 0.0.0 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <title>test package &mdash; py2opsin 1.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=371f806f" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=8209df7b" />
+
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+      <script src="_static/jquery.js?v=3d1d8b85"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=04b1687e"></script>
+      <script src="_static/doctools.js?v=e1f2eec6"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="start_project module" href="start_project.html" /> 
+    <link rel="prev" title="setup module" href="setup.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -26,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> blankpythonproject
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            py2opsin
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -38,13 +43,16 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">blank-python-project</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="blankpythonproject.html">blankpythonproject package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">py2opsin</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="py2opsin.html">py2opsin package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="setup.html">setup module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="start_project.html">start_project module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">test package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-test.test_blankpythonproject">test.test_blankpythonproject module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-test-performance-module">test.test_performance module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-test.test_py2opsin">test.test_py2opsin module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#test.test_py2opsin.Test_py2opsin"><code class="docutils literal notranslate"><span class="pre">Test_py2opsin</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-test">Module contents</a></li>
 </ul>
 </li>
@@ -58,16 +66,16 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">blankpythonproject</a>
+          <a href="index.html">py2opsin</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="modules.html">blank-python-project</a> &raquo;</li>
-      <li>test package</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">py2opsin</a></li>
+      <li class="breadcrumb-item active">test package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/test.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -78,33 +86,103 @@
            <div itemprop="articleBody">
              
   <section id="test-package">
-<h1>test package<a class="headerlink" href="#test-package" title="Permalink to this headline"></a></h1>
+<h1>test package<a class="headerlink" href="#test-package" title="Link to this heading"></a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="module-test.test_blankpythonproject">
-<span id="test-test-blankpythonproject-module"></span><h2>test.test_blankpythonproject module<a class="headerlink" href="#module-test.test_blankpythonproject" title="Permalink to this headline"></a></h2>
+<section id="test-test-performance-module">
+<h2>test.test_performance module<a class="headerlink" href="#test-test-performance-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-test.test_py2opsin">
+<span id="test-test-py2opsin-module"></span><h2>test.test_py2opsin module<a class="headerlink" href="#module-test.test_py2opsin" title="Link to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="test.test_blankpythonproject.Test_blankpythonproject">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">test.test_blankpythonproject.</span></span><span class="sig-name descname"><span class="pre">Test_blankpythonproject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#test.test_blankpythonproject.Test_blankpythonproject" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
-<p>Test the various functionalities of blankpythonproject.</p>
+<dt class="sig sig-object py" id="test.test_py2opsin.Test_py2opsin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">test.test_py2opsin.</span></span><span class="sig-name descname"><span class="pre">Test_py2opsin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#test.test_py2opsin.Test_py2opsin" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<p>Test the various functionalities of py2opsin.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="test.test_blankpythonproject.Test_blankpythonproject.setUpClass">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setUpClass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test.test_blankpythonproject.Test_blankpythonproject.setUpClass" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="test.test_py2opsin.Test_py2opsin.setUpClass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setUpClass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test.test_py2opsin.Test_py2opsin.setUpClass" title="Link to this definition"></a></dt>
 <dd><p>Hook method for setting up class fixture before running tests in the class.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="test.test_blankpythonproject.Test_blankpythonproject.test_placeholder">
-<span class="sig-name descname"><span class="pre">test_placeholder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test.test_blankpythonproject.Test_blankpythonproject.test_placeholder" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="test.test_py2opsin.Test_py2opsin.test_allow_multiple_options">
+<span class="sig-name descname"><span class="pre">test_allow_multiple_options</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test.test_py2opsin.Test_py2opsin.test_allow_multiple_options" title="Link to this definition"></a></dt>
+<dd><p>Test whether py2opsin can handle multiple arguments passed to it</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_py2opsin.Test_py2opsin.test_helpful_warning">
+<span class="sig-name descname"><span class="pre">test_helpful_warning</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test.test_py2opsin.Test_py2opsin.test_helpful_warning" title="Link to this definition"></a></dt>
+<dd><p>Raise warnings when input cannot be parsed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_py2opsin.Test_py2opsin.test_invalid_output_helpful_error">
+<span class="sig-name descname"><span class="pre">test_invalid_output_helpful_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test.test_py2opsin.Test_py2opsin.test_invalid_output_helpful_error" title="Link to this definition"></a></dt>
+<dd><p>Typo in the output specification should be greeted with helpful error.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_py2opsin.Test_py2opsin.test_invalid_output_spec">
+<span class="sig-name descname"><span class="pre">test_invalid_output_spec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test.test_py2opsin.Test_py2opsin.test_invalid_output_spec" title="Link to this definition"></a></dt>
+<dd><p>Invalid output specification should raise a runtime error.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_py2opsin.Test_py2opsin.test_list_with_errors">
+<span class="sig-name descname"><span class="pre">test_list_with_errors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test.test_py2opsin.Test_py2opsin.test_list_with_errors" title="Link to this definition"></a></dt>
+<dd><p>Test whether OPSIN will return a list if there is at least one failed translation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_py2opsin.Test_py2opsin.test_multiprocessing">
+<span class="sig-name descname"><span class="pre">test_multiprocessing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test.test_py2opsin.Test_py2opsin.test_multiprocessing" title="Link to this definition"></a></dt>
+<dd><p>py2opsin should safely work when run with multiprocessing</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_py2opsin.Test_py2opsin.test_name_to_cml">
+<span class="sig-name descname"><span class="pre">test_name_to_cml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test.test_py2opsin.Test_py2opsin.test_name_to_cml" title="Link to this definition"></a></dt>
+<dd><p>Tests converting IUPAC names to CML format</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_py2opsin.Test_py2opsin.test_name_to_extendedsmiles">
+<span class="sig-name descname"><span class="pre">test_name_to_extendedsmiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test.test_py2opsin.Test_py2opsin.test_name_to_extendedsmiles" title="Link to this definition"></a></dt>
+<dd><p>Tests converting IUPAC names to Extended SMILES</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_py2opsin.Test_py2opsin.test_name_to_inchi_fixedh">
+<span class="sig-name descname"><span class="pre">test_name_to_inchi_fixedh</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test.test_py2opsin.Test_py2opsin.test_name_to_inchi_fixedh" title="Link to this definition"></a></dt>
+<dd><p>Tests converting IUPAC names to standard InChI with fixed H</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_py2opsin.Test_py2opsin.test_name_to_smiles">
+<span class="sig-name descname"><span class="pre">test_name_to_smiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test.test_py2opsin.Test_py2opsin.test_name_to_smiles" title="Link to this definition"></a></dt>
+<dd><p>Tests converting IUPAC names to SMILES strings</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_py2opsin.Test_py2opsin.test_name_to_stdinchi">
+<span class="sig-name descname"><span class="pre">test_name_to_stdinchi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test.test_py2opsin.Test_py2opsin.test_name_to_stdinchi" title="Link to this definition"></a></dt>
+<dd><p>Tests converting IUPAC names to standard InChI</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="test.test_py2opsin.Test_py2opsin.test_name_to_stdinchikey">
+<span class="sig-name descname"><span class="pre">test_name_to_stdinchikey</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test.test_py2opsin.Test_py2opsin.test_name_to_stdinchikey" title="Link to this definition"></a></dt>
+<dd><p>Tests converting IUPAC names to standard InChI keys</p>
+</dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="module-test">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-test" title="Permalink to this headline"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-test" title="Link to this heading"></a></h2>
 </section>
 </section>
 
@@ -112,7 +190,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="start_project.html" class="btn btn-neutral float-left" title="start_project module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setup.html" class="btn btn-neutral float-left" title="setup module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

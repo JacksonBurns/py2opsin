@@ -4,10 +4,18 @@ test package
 Submodules
 ----------
 
-test.test\_blankpythonproject module
-------------------------------------
+test.test\_performance module
+-----------------------------
 
-.. automodule:: test.test_blankpythonproject
+.. automodule:: test.test_performance
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+test.test\_py2opsin module
+--------------------------
+
+.. automodule:: test.test_py2opsin
    :members:
    :undoc-members:
    :show-inheritance:
