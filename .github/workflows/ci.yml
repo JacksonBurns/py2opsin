@@ -56,6 +56,8 @@ jobs:
       - name: Skip Network-Related Performance Tests on Windows
         if: runner.os == 'windows'
         run: touch test/.no_perf_test
+      - name: DROP ME run tests outside of retry afor stack trace
+        run: coverage run --source=. --omit=py2opsin/__init__.py,setup.py,test/* -m unittest discover
       - name: Run Tests
         uses: nick-fields/retry@v3
         with:
