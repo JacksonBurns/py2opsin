@@ -55,7 +55,7 @@ jobs:
           python -m pip install coverage
       - name: Skip Network-Related Performance Tests on Windows
         if: runner.os == 'windows'
-        run: touch .no_perf_test
+        run: touch test/.no_perf_test
       - name: Run Tests
         uses: nick-fields/retry@v3
         with:
