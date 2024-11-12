@@ -55,6 +55,7 @@ jobs:
           python -m pip install coverage
       - name: Run Tests
         run: |
+          touch .no_perf_test
           coverage run --source=. --omit=py2opsin/__init__.py,setup.py,test/* -m unittest discover
       - name: Show Coverage
         run: |
