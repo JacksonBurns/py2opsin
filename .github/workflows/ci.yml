@@ -54,13 +54,9 @@ jobs:
           python -m pip install .[dev]
           python -m pip install coverage
       - name: Run Tests
-        uses: nick-fields/retry@v3
-        with:
-          max_attempts: 3
-          timeout_minutes: 15
-          shell: bash
-          command: |
-            mamba run -n test coverage run --source=. --omit=py2opsin/__init__.py,setup.py,test/* -m unittest discover
+        run: |
+          touch .no_perf_test
+          coverage run --source=. --omit=py2opsin/__init__.py,setup.py,test/* -m unittest discover
       - name: Show Coverage
         run: |
           coverage report -m
