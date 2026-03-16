@@ -54,9 +54,6 @@ Arguments:
  - jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "opsin-cli.jar" which is distributed with py2opsin.
  - tmp_fpath (str, optional): tmp_fpath (str, optional): Name for temporary file used for calling OPSIN. Defaults to "py2opsin_temp_input.txt". When multiprocessing, set this to a unique name for each process.
 
-> [!TIP]
-> `OPSIN` will already parallelize itself by creating multiple threads! Be wary when using `py2opsin` with multiprocessing to avoid spawning too many processes.
-
 ## Massive speedup from `pubchempy` for batch translations
 `py2opsin` runs locally and is smaller in scope in what it provides, which makes it __dramatically__ faster at resolving identifiers. In the code block below, the call to `py2opsin` will execute faster than an equivalent call to `pubchempy`:
 ```python
