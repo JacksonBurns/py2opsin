@@ -4,7 +4,6 @@ import sys
 import warnings
 from difflib import get_close_matches
 from typing import Union
-from subprocess import CalledProcessError
 
 try:
     # python < 3.8
