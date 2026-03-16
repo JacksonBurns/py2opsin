@@ -14,7 +14,7 @@
 </p> 
 
 ## Installation
-`py2opsin` can be installed with `pip install py2opsin`. It has _zero_ Python dependencies (`OPSIN v2.8.0` is included in the PyPI package) and should work inside any environment running modern Python. Java 8+ is required to run OPSIN.
+`py2opsin` can be installed with `pip install py2opsin`. It has _zero_ Python dependencies (`OPSIN v2.9.0` is included in the PyPI package) and should work inside any environment running modern Python. Java 8+ is required to run OPSIN.
 
 Try a demo of `py2opsin` live on your browser (no installation required!): [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JacksonBurns/py2opsin/blob/main/examples/py2opsin_example.ipynb)
 
@@ -53,9 +53,6 @@ Arguments:
  - wildcard_radicals (bool, optional): Output radicals as wildcards. Defaults to False.
  - jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "opsin-cli.jar" which is distributed with py2opsin.
  - tmp_fpath (str, optional): tmp_fpath (str, optional): Name for temporary file used for calling OPSIN. Defaults to "py2opsin_temp_input.txt". When multiprocessing, set this to a unique name for each process.
-
-> [!TIP]
-> `OPSIN` will already parallelize itself by creating multiple threads! Be wary when using `py2opsin` with multiprocessing to avoid spawning too many processes.
 
 ## Massive speedup from `pubchempy` for batch translations
 `py2opsin` runs locally and is smaller in scope in what it provides, which makes it __dramatically__ faster at resolving identifiers. In the code block below, the call to `py2opsin` will execute faster than an equivalent call to `pubchempy`:
