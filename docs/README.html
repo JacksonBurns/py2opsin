@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation &mdash; py2opsin 1.3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=1f29e9d3"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="py2opsin" href="modules.html" />
+    <link rel="prev" title="py2opsin documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            py2opsin
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#massive-speedup-from-pubchempy-for-batch-translations">Massive speedup from <code class="docutils literal notranslate"><span class="pre">pubchempy</span></code> for batch translations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#online-documentation">Online Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#citation">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#contributing-developer-notes">Contributing &amp; Developer Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#developer-install">Developer Install</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">py2opsin</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">py2opsin</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p><span class="raw-html-m2r"><h1 align="center">py2opsin</h1></span></p>
+<h3 align="center">Simple Python interface to <a href="https://github.com/dan2097/opsin">OPSIN: Open Parser for Systematic IUPAC nomenclature</a></h3><p align="center">
+  <img alt="GitHub Repo Stars" src="https://img.shields.io/github/stars/JacksonBurns/py2opsin?style=social">
+  <img alt="Lifetime Downloads" src="https://static.pepy.tech/personalized-badge/py2opsin?period=total&units=none&left_color=grey&right_color=red&left_text=Lifetime%20Downloads">
+  <img alt="PyPI - License" src="https://img.shields.io/github/license/JacksonBurns/py2opsin">
+  <img alt="PyPI" src="https://img.shields.io/pypi/v/py2opsin">
+  <img alt="Continuous Integration" src="https://github.com/JacksonBurns/py2opsin/actions/workflows/ci.yml/badge.svg?branch=main&event=schedule">
+</p><p align="center">
+  <img alt="py2opsin demo" src="https://github.com/JacksonBurns/py2opsin/blob/main/py2opsin_demo.gif">
+</p><section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">py2opsin</span></code> can be installed with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">py2opsin</span></code>. It has <em>zero</em> Python dependencies (<code class="docutils literal notranslate"><span class="pre">OPSIN</span> <span class="pre">v2.10.0</span></code> is included in the PyPI package) and should work inside any environment running modern Python. Java 8+ is required to run OPSIN.</p>
+<p>Try a demo of <code class="docutils literal notranslate"><span class="pre">py2opsin</span></code> live on your browser (no installation required!):
+.. image:: <a class="reference external" href="https://colab.research.google.com/assets/colab-badge.svg">https://colab.research.google.com/assets/colab-badge.svg</a></p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">target<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://colab.research.google.com/github/JacksonBurns/py2opsin/blob/main/examples/py2opsin_example.ipynb">https://colab.research.google.com/github/JacksonBurns/py2opsin/blob/main/examples/py2opsin_example.ipynb</a></p>
+</dd>
+<dt class="field-even">alt<span class="colon">:</span></dt>
+<dd class="field-even"><p>Open In Colab</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h1>
+<p>Command-line arguments available in <code class="docutils literal notranslate"><span class="pre">OPSIN</span></code> can be passed through to <code class="docutils literal notranslate"><span class="pre">py2opsin</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">py2opsin</span><span class="w"> </span><span class="kn">import</span> <span class="n">py2opsin</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">smiles_string</span> <span class="o">=</span> <span class="n">py2opsin</span><span class="p">(</span>
+    <span class="n">chemical_name</span> <span class="o">=</span> <span class="s2">"ethane"</span><span class="p">,</span>
+    <span class="n">output_format</span> <span class="o">=</span> <span class="s2">"SMILES"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">smiles_str</span> <span class="o">=</span> <span class="s2">"CC"</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">py2opsin</span><span class="p">(</span>
+    <span class="n">chemical_name</span><span class="p">:</span> <span class="nb">str</span> <span class="ow">or</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">strings</span><span class="p">,</span>
+    <span class="n">output_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"SMILES"</span><span class="p">,</span>
+    <span class="n">allow_acid</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">allow_radicals</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">allow_bad_stereo</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">wildcard_radicals</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">threads</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">jar_fpath</span> <span class="o">=</span> <span class="s2">"/path/to/opsin.jar"</span><span class="p">,</span>
+    <span class="n">tmp_fpath</span> <span class="o">=</span> <span class="s2">"py2opsin_temp_input.txt"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The result is returned as a Python string, or False if an unexpected error occurs when calling OPSIN. If a list of IUPAC names is provided, a list is returned. It is <strong>highly</strong> recommended to use <code class="docutils literal notranslate"><span class="pre">py2opsin</span></code> in this manner if you need to resolve any more than a couple names – the performance cost of running <code class="docutils literal notranslate"><span class="pre">OPSIN</span></code> from Python one name at a time is significant (~5 seconds/molecule individually, milliseconds otherwise).</p>
+<p>Arguments:</p>
+<ul class="simple">
+<li><p>chemical_name (str): IUPAC name of chemical as a Python string, or a list of strings.</p></li>
+<li><p>output_format (str, optional): One of “SMILES”, “CML”, “InChI”, “StdInChI”, or “StdInChIKey”. Defaults to “SMILES”.</p></li>
+<li><p>allow_acid (bool, optional): Allow interpretation of acids. Defaults to False.</p></li>
+<li><p>allow_radicals (bool, optional): Enable radical interpretation. Defaults to False.</p></li>
+<li><p>allow_bad_stereo (bool, optional): Allow OPSIN to ignore uninterpreatable stereochem. Defaults to False.</p></li>
+<li><p>wildcard_radicals (bool, optional): Output radicals as wildcards. Defaults to False.</p></li>
+<li><p>threads (int, optional): Number of names to interpret concurrently (<code class="docutils literal notranslate"><span class="pre">OPSIN</span> <span class="pre">&gt;=</span> <span class="pre">2.10.0</span></code>). Output order always matches input order. Use <code class="docutils literal notranslate"><span class="pre">0</span></code> for one thread per available processor. Defaults to 1 (sequential).</p></li>
+<li><p>jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to “default”, which uses the jar distributed with py2opsin.</p></li>
+<li><p>tmp_fpath (str, optional): Name for temporary file used for calling OPSIN. Defaults to “py2opsin_temp_input.txt”. When multiprocessing, set this to a unique name for each process.</p></li>
+</ul>
+</section>
+<section id="massive-speedup-from-pubchempy-for-batch-translations">
+<h1>Massive speedup from <code class="docutils literal notranslate"><span class="pre">pubchempy</span></code> for batch translations<a class="headerlink" href="#massive-speedup-from-pubchempy-for-batch-translations" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">py2opsin</span></code> runs locally and is smaller in scope in what it provides, which makes it <strong>dramatically</strong> faster at resolving identifiers. In the code block below, the call to <code class="docutils literal notranslate"><span class="pre">py2opsin</span></code> will execute faster than an equivalent call to <code class="docutils literal notranslate"><span class="pre">pubchempy</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pubchempy</span><span class="w"> </span><span class="kn">import</span> <span class="n">PubChemHTTPError</span><span class="p">,</span> <span class="n">get_compounds</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">py2opsin</span><span class="w"> </span><span class="kn">import</span> <span class="n">py2opsin</span>
+
+<span class="n">compound_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"pyridine, 2-amino-"</span><span class="p">,</span>
+    <span class="s2">"pyridine, 3-iodo-"</span><span class="p">,</span>
+<span class="o">...</span>
+    <span class="s2">"aniline, 2,4,6-trinitro-"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">compound</span> <span class="ow">in</span> <span class="n">compound_list</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">get_compounds</span><span class="p">(</span><span class="n">compound</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">)</span>
+
+<span class="n">smiles_strings</span> <span class="o">=</span> <span class="n">py2opsin</span><span class="p">(</span><span class="n">compound_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>Jeremy Monat’s (<a class="reference external" href="https://github.com/bertiewooster">&#64;bertiewooster</a>) fantastic <a class="reference external" href="https://bertiewooster.github.io/2023/03/10/Revisiting-a-Classic-Cheminformatics-Paper-The-Wiener-Index.html">blog post</a> using <code class="docutils literal notranslate"><span class="pre">py2opsin</span></code> to help explore the Wiener Index by enabling translation from IUPAC names into molecules directly from the original paper.</p></li>
+<li><p>“Holistic chemical evaluation reveals pitfalls in reaction prediction models” by Gil et al. on <a class="reference external" href="https://arxiv.org/abs/2312.09004">arXiv</a> uses <code class="docutils literal notranslate"><span class="pre">py2opsin</span></code> to help translate a large dataset, see their <a class="reference external" href="https://github.com/schwallergroup/choriso/blob/baa87aeb61aab170f3100596c070fcc046291455/notebooks/07_dictionnary_creation.ipynb">code on GitHub</a>.</p></li>
+</ul>
+</section>
+<section id="online-documentation">
+<h1>Online Documentation<a class="headerlink" href="#online-documentation" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://JacksonBurns.github.io/py2opsin/">Click here to read the documentation</a></p>
+</section>
+<section id="citation">
+<h1>Citation<a class="headerlink" href="#citation" title="Link to this heading"></a></h1>
+<p>Please check <a class="reference external" href="https://github.com/dan2097/opsin#about-opsin">the OPSIN repository</a> for the latest citation information, which as of October 2023 suggests citing this paper:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Chemical</span> <span class="n">Name</span> <span class="n">to</span> <span class="n">Structure</span><span class="p">:</span> <span class="n">OPSIN</span><span class="p">,</span> <span class="n">an</span> <span class="n">Open</span> <span class="n">Source</span> <span class="n">Solution</span>
+<span class="n">Daniel</span> <span class="n">M</span><span class="o">.</span> <span class="n">Lowe</span><span class="p">,</span> <span class="n">Peter</span> <span class="n">T</span><span class="o">.</span> <span class="n">Corbett</span><span class="p">,</span> <span class="n">Peter</span> <span class="n">Murray</span><span class="o">-</span><span class="n">Rust</span><span class="p">,</span> <span class="n">Robert</span> <span class="n">C</span><span class="o">.</span> <span class="n">Glen</span>
+<span class="n">Journal</span> <span class="n">of</span> <span class="n">Chemical</span> <span class="n">Information</span> <span class="ow">and</span> <span class="n">Modeling</span> <span class="mi">2011</span> <span class="mi">51</span> <span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="mi">739</span><span class="o">-</span><span class="mi">753</span>
+</pre></div>
+</div>
+<p>You may also see fit to mention that you used <code class="docutils literal notranslate"><span class="pre">py2opsin</span></code> to run <code class="docutils literal notranslate"><span class="pre">OPSIN</span></code>, but <code class="docutils literal notranslate"><span class="pre">py2opsin</span></code> itself isn’t a significant scholarly effort and thus does not have a DOI.
+Providing a link to this GitHub repository along with the version of <code class="docutils literal notranslate"><span class="pre">py2opsin</span></code> used is sufficient.</p>
+</section>
+<section id="contributing-developer-notes">
+<h1>Contributing &amp; Developer Notes<a class="headerlink" href="#contributing-developer-notes" title="Link to this heading"></a></h1>
+<p>Pull Requests, Bug Reports, and all Contributions are welcome! Please use the appropriate issue or pull request template when making a contribution.</p>
+<p>When submitting a PR, please mark your PR with the “PR Ready for Review” label when you are finished making changes so that the GitHub actions bots can work their magic!</p>
+<section id="developer-install">
+<h2>Developer Install<a class="headerlink" href="#developer-install" title="Link to this heading"></a></h2>
+<p>To contribute to the <code class="docutils literal notranslate"><span class="pre">py2opsin</span></code> source code, start by cloning the repository (i.e. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:JacksonBurns/py2opsin.git</span></code>) and then inside the repository run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.[dev]</span></code>. This will set you up with all the required dependencies to run <code class="docutils literal notranslate"><span class="pre">py2opsin</span></code> and conform to our formatting standards (<code class="docutils literal notranslate"><span class="pre">black</span></code> and <code class="docutils literal notranslate"><span class="pre">isort</span></code>), which you can configure to run automatically in vscode <a class="reference external" href="https://marcobelo.medium.com/setting-up-python-black-on-visual-studio-code-5318eba4cd00#:~:text=Go%20to%20settings%20in%20your,%E2%80%9D%20and%20select%20%E2%80%9Cblack%E2%80%9D.">like this</a>.</p>
+<p>Unit and performance tests can then be executed with <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.</p>
+<p><strong>Note for Windows Powershell or MacOS Catalina or newer</strong>: On these systems the command line will complain about square brackets, so you will need to double quote the install command (i.e. <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">&quot;.[dev]&quot;</span></code>).</p>
+</section>
+</section>
+<section id="license">
+<h1>License<a class="headerlink" href="#license" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">OPSIN</span></code> and <code class="docutils literal notranslate"><span class="pre">py2opsin</span></code> are both distributed under the MIT license.</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="py2opsin documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="py2opsin" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Jackson Burns.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
