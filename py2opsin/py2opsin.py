@@ -51,6 +51,7 @@ def py2opsin(
     allow_radicals: bool = False,
     allow_bad_stereo: bool = False,
     wildcard_radicals: bool = False,
+    threads: int = 1,
     jar_fpath: str = "default",
     tmp_fpath: str = "py2opsin_temp_input.txt",
 ) -> str:
@@ -64,6 +65,9 @@ def py2opsin(
         allow_radicals (bool, optional): Enable radical interpretation. Defaults to False.
         allow_bad_stereo (bool, optional): Allow OPSIN to ignore uninterpreatable stereochem. Defaults to False.
         wildcard_radicals (bool, optional): Output radicals as wildcards. Defaults to False.
+        threads (int, optional): Number of names to interpret concurrently (OPSIN >= 2.10.0).
+                                        Output order always matches input order. Use 0 for one thread
+                                        per available processor. Defaults to 1 (sequential).
         jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "default", which causes py2opsin to use its included jar.
         tmp_fpath (str, optional): Name for temporary file used for calling OPSIN. Defaults to "py2opsin_temp_input.txt".
                                    When multiprocessing, set this to a unique name for each process.
@@ -73,7 +77,7 @@ def py2opsin(
     """
     # path to OPSIN jar
     if jar_fpath == "default":
-        jar_fpath = pkg_fopen("opsin-cli-2.9.0-jar-with-dependencies.jar")
+        jar_fpath = pkg_fopen("opsin-cli-2.10.0-jar-with-dependencies.jar")
 
     # default arguments to start
     arg_list = ["java", "-jar", jar_fpath]
@@ -132,6 +136,13 @@ def py2opsin(
         arg_list.append("-s")
     if wildcard_radicals:
         arg_list.append("-w")
+    if not isinstance(threads, int) or isinstance(threads, bool) or threads < 0:
+        raise RuntimeError(
+            "threads must be a non-negative integer (0 = one thread per "
+            "available processor), got {!r}.".format(threads)
+        )
+    if threads != 1:
+        arg_list.extend(["-t", str(threads)])
 
     # do the call
     result = subprocess.run(
