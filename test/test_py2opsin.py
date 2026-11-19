@@ -1,5 +1,5 @@
-import os
 import multiprocessing
+import os
 import sys
 import unittest
 
@@ -18,11 +18,6 @@ class Test_py2opsin(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
-        self.jar_path = os.path.join(
-            os.getcwd(),
-            "opsin-cli-2.7.0-jar-with-dependencies.jar",
-        )
-
         self.chemical_names = (
             "ethane",
             "water",
@@ -203,6 +198,44 @@ class Test_py2opsin(unittest.TestCase):
         with self.assertWarns(RuntimeWarning):
             smiles_list = py2opsin(list_with_errors)
         self.assertEqual(smiles_list, correct_list)
+
+    def test_threads_matches_sequential(self):
+        """
+        Multi-threaded interpretation (OPSIN -t flag) must return the same
+        results, in the same order, as sequential interpretation.
+        """
+        sequential = py2opsin(self.chemical_names)
+        threaded = py2opsin(self.chemical_names, threads=4)
+        self.assertEqual(threaded, sequential)
+        self.assertEqual(threaded, list(self.chemical_smiles))
+
+    def test_threads_zero(self):
+        """
+        threads=0 should use one thread per available processor and work.
+        """
+        result = py2opsin(self.chemical_names, threads=0)
+        self.assertEqual(result, list(self.chemical_smiles))
+
+    def test_threads_single_string(self):
+        """
+        threads should be a no-op (not an error) for a single input name.
+        """
+        self.assertEqual(py2opsin("ethane", threads=4), "CC")
+
+    def test_threads_with_format_and_flags(self):
+        """
+        threads should compose with other options.
+        """
+        threaded = py2opsin(self.chemical_names, output_format="StdInChIKey", threads=2)
+        self.assertEqual(threaded, list(self.chemical_stdinchikeys))
+
+    def test_threads_invalid(self):
+        """
+        Invalid thread counts should raise a helpful RuntimeError.
+        """
+        for bad in [-1, 1.5, "4", True]:
+            with self.assertRaises(RuntimeError):
+                py2opsin(self.chemical_names, threads=bad)
 
 
 if __name__ == "__main__":

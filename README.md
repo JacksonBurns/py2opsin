@@ -14,7 +14,7 @@
 </p> 
 
 ## Installation
-`py2opsin` can be installed with `pip install py2opsin`. It has _zero_ Python dependencies (`OPSIN v2.9.0` is included in the PyPI package) and should work inside any environment running modern Python. Java 8+ is required to run OPSIN.
+`py2opsin` can be installed with `pip install py2opsin`. It has _zero_ Python dependencies (`OPSIN v2.10.0` is included in the PyPI package) and should work inside any environment running modern Python. Java 8+ is required to run OPSIN.
 
 Try a demo of `py2opsin` live on your browser (no installation required!): [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JacksonBurns/py2opsin/blob/main/examples/py2opsin_example.ipynb)
 
@@ -37,6 +37,7 @@ smiles_str = "CC"
     allow_radicals = True,
     allow_bad_stereo = False,
     wildcard_radicals = False,
+    threads = 1,
     jar_fpath = "/path/to/opsin.jar",
     tmp_fpath = "py2opsin_temp_input.txt",
 )
@@ -51,8 +52,9 @@ Arguments:
  - allow_radicals (bool, optional): Enable radical interpretation. Defaults to False.
  - allow_bad_stereo (bool, optional): Allow OPSIN to ignore uninterpreatable stereochem. Defaults to False.
  - wildcard_radicals (bool, optional): Output radicals as wildcards. Defaults to False.
- - jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "opsin-cli.jar" which is distributed with py2opsin.
- - tmp_fpath (str, optional): tmp_fpath (str, optional): Name for temporary file used for calling OPSIN. Defaults to "py2opsin_temp_input.txt". When multiprocessing, set this to a unique name for each process.
+ - threads (int, optional): Number of names to interpret concurrently (`OPSIN >= 2.10.0`). Output order always matches input order. Use `0` for one thread per available processor. Defaults to 1 (sequential).
+ - jar_fpath (str, optional): Filepath to OPSIN jar file. Defaults to "default", which uses the jar distributed with py2opsin.
+ - tmp_fpath (str, optional): Name for temporary file used for calling OPSIN. Defaults to "py2opsin_temp_input.txt". When multiprocessing, set this to a unique name for each process.
 
 ## Massive speedup from `pubchempy` for batch translations
 `py2opsin` runs locally and is smaller in scope in what it provides, which makes it __dramatically__ faster at resolving identifiers. In the code block below, the call to `py2opsin` will execute faster than an equivalent call to `pubchempy`:
