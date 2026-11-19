@@ -5,6 +5,9 @@ on:
 
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -12,37 +15,51 @@ jobs:
       run:
         shell: bash -el {0}
     steps:
-      - uses: actions/checkout@v3
-      - uses: conda-incubator/setup-miniconda@v2
+      - uses: actions/checkout@v4
+      - name: Setup Miniforge Python 3.10
+        # setup-miniconda@v2 + auto-update-conda is dead on current
+        # GitHub runners ("No installed conda 'base' environment found";
+        # failed the 2026-11-19 main push). Mirror the pinned, proven
+        # invocation from ci.yml.
+        uses: conda-incubator/setup-miniconda@v3
         with:
-          auto-update-conda: true
+          miniforge-variant: Miniforge3
+          miniforge-version: latest
           python-version: '3.10'
+          use-mamba: true
       - name: Install Dependencies
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          python -m pip install -e .[molecules]
-          python -m pip install sphinx sphinx-rtd-theme m2r mistune==0.8.4
-          
-      - uses: actions/checkout@v3
+          # setup.py exposes no "molecules" extra (leftover from the
+          # original project template), so this install would have failed
+          # the build even once conda was fixed. py2opsin is the only
+          # runtime import autodoc needs.
+          python -m pip install -e .
+          # m2r is unmaintained and breaks against modern docutils;
+          # m2r2 + pinned mistune==0.8.4 render README.md into the docs.
+          python -m pip install sphinx sphinx-rtd-theme m2r2 "mistune==0.8.4"
+      - uses: actions/checkout@v4
         with:
           ref: docs
-      - name: Update Docs to Main    
+      - name: Update Docs to Main
         run: |
           git fetch --all
           git reset --hard origin/main
-        
+
       - name: Generate Documentation
         run: |
           cd docs
-          rm *.html *.doctree || true
-          sphinx-apidoc -f -o . ..
+          rm -f *.html *.doctree *.inv *.js *.pickle || true
+          # apidoc patterns match absolute paths; exclude setup.py, whose
+          # module-level setup() call trips autodoc's import guard.
+          sphinx-apidoc -f -o . .. "$(realpath ../setup.py)"
           make clean
           make html
           cp -r _build/html/* .
           cp -r _build/doctrees/* .
           echo "" > .nojekyll
-          
+
       - name: Push to Docs Branch
         run: |
           git add .
